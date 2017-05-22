@@ -26,7 +26,7 @@ define('main',['exports', './environment'], function (exports, _environment) {
   }
 
   function configure(aurelia) {
-    aurelia.use.standardConfiguration().feature('resources');
+    aurelia.use.standardConfiguration().plugin('aurelia-dialog').feature('resources');
 
     if (_environment2.default.debug) {
       aurelia.use.developmentLogging();
@@ -423,44 +423,6 @@ define('backend/server',['exports', './lorem'], function (exports, _lorem) {
     return Server;
   }();
 });
-define('home/home',['exports', 'aurelia-framework', 'backend/server'], function (exports, _aureliaFramework, _server) {
-  'use strict';
-
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  exports.Home = undefined;
-
-  function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-
-  var _dec, _class;
-
-  var Home = exports.Home = (_dec = (0, _aureliaFramework.inject)(_server.Server), _dec(_class = function () {
-    function Home(server) {
-      _classCallCheck(this, Home);
-
-      this.server = server;
-      this.activity = null;
-      this.news = null;
-    }
-
-    Home.prototype.activate = function activate() {
-      var _this = this;
-
-      return Promise.all([this.server.getRecentActivity().then(function (activity) {
-        return _this.activity = activity;
-      }), this.server.getNews().then(function (news) {
-        return _this.news = news;
-      })]);
-    };
-
-    return Home;
-  }()) || _class);
-});
 define('login/login',['exports', 'aurelia-dependency-injection', 'aurelia-framework', 'backend/server'], function (exports, _aureliaDependencyInjection, _aureliaFramework, _server) {
   'use strict';
 
@@ -503,6 +465,44 @@ define('login/login',['exports', 'aurelia-dependency-injection', 'aurelia-framew
     };
 
     return Login;
+  }()) || _class);
+});
+define('home/home',['exports', 'aurelia-framework', 'backend/server'], function (exports, _aureliaFramework, _server) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.Home = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _class;
+
+  var Home = exports.Home = (_dec = (0, _aureliaFramework.inject)(_server.Server), _dec(_class = function () {
+    function Home(server) {
+      _classCallCheck(this, Home);
+
+      this.server = server;
+      this.activity = null;
+      this.news = null;
+    }
+
+    Home.prototype.activate = function activate() {
+      var _this = this;
+
+      return Promise.all([this.server.getRecentActivity().then(function (activity) {
+        return _this.activity = activity;
+      }), this.server.getNews().then(function (news) {
+        return _this.news = news;
+      })]);
+    };
+
+    return Home;
   }()) || _class);
 });
 define('resources/index',['exports'], function (exports) {
@@ -598,6 +598,303 @@ define('shell/shell',['exports', 'aurelia-framework', 'backend/server', './route
     return Shell;
   }()) || _class);
 });
+define('tickets/thread',['exports', 'aurelia-framework', 'aurelia-event-aggregator', 'aurelia-router', 'resources/dialogs/common-dialogs', 'resources/messages/tab-opened', 'backend/server'], function (exports, _aureliaFramework, _aureliaEventAggregator, _aureliaRouter, _commonDialogs, _tabOpened, _server) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.Thread = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _class;
+
+  var Thread = exports.Thread = (_dec = (0, _aureliaFramework.inject)(_server.Server, _aureliaRouter.Router, _commonDialogs.CommonDialogs, _aureliaEventAggregator.EventAggregator, _server.User), _dec(_class = function () {
+    function Thread(server, router, commonDialogs, eventAggregator, user) {
+      _classCallCheck(this, Thread);
+
+      this.server = server;
+      this.router = router;
+      this.commonDialogs = commonDialogs;
+      this.eventAggregator = eventAggregator;
+      this.user = user;
+    }
+
+    Thread.prototype.getParticipant = function getParticipant(id) {
+      return this.ticket.participants.find(function (x) {
+        return x.id == id;
+      });
+    };
+
+    Thread.prototype.save = function save() {
+      var _this = this;
+
+      var isNew = this.ticket.id == 0;
+      this.server.saveTicket(this.ticket).then(function (ticket) {
+        _this.ticket = ticket;
+
+        if (isNew) {
+          _this.router.navigateToRoute('thread', { id: ticket.id }, { replace: true, trigger: false });
+          _this.eventAggregator.publish(new _tabOpened.TabOpened(ticket.title, 'thread', { id: ticket.id }));
+        }
+      });
+    };
+
+    Thread.prototype.submit = function submit(status) {
+      if (this.message) {
+        if (!this.getParticipant(this.user.id)) {
+          this.ticket.participants.push(this.user);
+        }
+
+        this.ticket.posts.unshift({
+          createdAt: new Date(),
+          fromId: this.user.id,
+          content: this.message
+        });
+
+        this.message = '';
+      }
+
+      this.ticket.status = status;
+      this.save();
+    };
+
+    Thread.prototype.canActivate = function canActivate(params) {
+      var _this2 = this;
+
+      if (params.id == 'new') {
+        if (params.title) {
+          this.ticket = this.server.createTicket(params.title);
+          this.from = this.getParticipant(this.ticket.fromId);
+          return true;
+        }
+
+        return this.commonDialogs.prompt().then(function (response) {
+          if (response.wasCancelled) {
+            return false;
+          }
+
+          return new _aureliaRouter.RedirectToRoute('thread', { id: 'new', title: response.output });
+        });
+      }
+
+      return this.server.getTicketDetails(parseInt(params.id)).then(function (ticket) {
+        if (ticket) {
+          _this2.ticket = ticket;
+          _this2.from = _this2.getParticipant(ticket.fromId);
+          _this2.eventAggregator.publish(new _tabOpened.TabOpened(ticket.title, 'thread', { id: ticket.id }));
+          return true;
+        }
+
+        return new _aureliaRouter.RedirectToRoute('home');
+      });
+    };
+
+    Thread.prototype.activate = function activate(params) {
+      this.message = '';
+    };
+
+    Thread.prototype.canDeactivate = function canDeactivate() {
+      if (this.ticket.id === 0) {
+        var message = 'You have created a ticket but have not yet posted it with a status. If you leave now, your work will be lost. Do you wish to continue?';
+
+        return this.commonDialogs.showMessage(message, 'Ticket Not Saved', ['Yes', 'No']).then(function (response) {
+          return !response.wasCancelled;
+        });
+      }
+
+      return true;
+    };
+
+    return Thread;
+  }()) || _class);
+});
+define('resources/dialogs/common-dialogs',['exports', 'aurelia-framework', 'aurelia-dialog', './message-box', './prompt'], function (exports, _aureliaFramework, _aureliaDialog, _messageBox, _prompt) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.CommonDialogs = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _class;
+
+  var CommonDialogs = exports.CommonDialogs = (_dec = (0, _aureliaFramework.inject)(_aureliaDialog.DialogService), _dec(_class = function () {
+    function CommonDialogs(dialogService) {
+      _classCallCheck(this, CommonDialogs);
+
+      this.dialogService = dialogService;
+    }
+
+    CommonDialogs.prototype.showMessage = function showMessage(message) {
+      var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Message';
+      var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : ['Ok'];
+
+      return this.dialogService.open({ viewModel: _messageBox.MessageBox, model: { message: message, title: title, options: options } });
+    };
+
+    CommonDialogs.prototype.prompt = function prompt(message) {
+      var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Prompt';
+
+      return this.dialogService.open({ viewModel: _prompt.Prompt, model: { message: message, title: title } });
+    };
+
+    return CommonDialogs;
+  }()) || _class);
+});
+define('resources/dialogs/message-box',['exports', 'aurelia-dialog', 'aurelia-framework'], function (exports, _aureliaDialog, _aureliaFramework) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.MessageBox = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _class;
+
+  var MessageBox = exports.MessageBox = (_dec = (0, _aureliaFramework.inject)(_aureliaDialog.DialogController), _dec(_class = function () {
+    function MessageBox(dialogController) {
+      _classCallCheck(this, MessageBox);
+
+      this.dialogController = dialogController;
+    }
+
+    MessageBox.prototype.activate = function activate(model) {
+      this.model = model;
+    };
+
+    MessageBox.prototype.selectOption = function selectOption(option) {
+      if (isCancel(option)) {
+        this.dialogController.cancel(option);
+      } else {
+        this.dialogController.ok(option);
+      }
+    };
+
+    return MessageBox;
+  }()) || _class);
+
+
+  function isCancel(option) {
+    return ['cancel', 'no'].indexOf(option.toLowerCase()) !== -1;
+  }
+});
+define('resources/dialogs/prompt',['exports', 'aurelia-dialog', 'aurelia-framework'], function (exports, _aureliaDialog, _aureliaFramework) {
+  'use strict';
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+  exports.Prompt = undefined;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var _dec, _class;
+
+  var Prompt = exports.Prompt = (_dec = (0, _aureliaFramework.inject)(_aureliaDialog.DialogController), _dec(_class = function () {
+    function Prompt(dialogController) {
+      _classCallCheck(this, Prompt);
+
+      this.dialogController = dialogController;
+      this.answer = null;
+    }
+
+    Prompt.prototype.activate = function activate(model) {
+      this.model = model;
+    };
+
+    Prompt.prototype.ok = function ok() {
+      if (this.answer) {
+        this.dialogController.ok(this.answer);
+      }
+    };
+
+    Prompt.prototype.cancel = function cancel() {
+      this.dialogController.cancel();
+    };
+
+    return Prompt;
+  }()) || _class);
+});
+define('resources/messages/tab-opened',["exports"], function (exports) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  var TabOpened = exports.TabOpened = function () {
+    function TabOpened(title, route, params) {
+      _classCallCheck(this, TabOpened);
+
+      this.title = title;
+      this.route = route;
+      this.params = params || {};
+      this.isActive = true;
+    }
+
+    TabOpened.prototype.updateActivation = function updateActivation(instruction) {
+      if (this.route !== instruction.config.name) {
+        this.isActive = false;
+        return;
+      }
+
+      var params = instruction.params;
+
+      for (var key in params) {
+        if (params[key] !== this.params[key].toString()) {
+          this.isActive = false;
+          return;
+        }
+      }
+
+      this.isActive = true;
+    };
+
+    TabOpened.prototype.matches = function matches(other) {
+      if (this.route !== other.route) {
+        return false;
+      }
+
+      for (var key in other.params) {
+        if (other.params[key] !== this.params[key]) {
+          return false;
+        }
+      }
+
+      return true;
+    };
+
+    return TabOpened;
+  }();
+});
 define('resources/value-converters/activity-type-to-route',['exports'], function (exports) {
   'use strict';
 
@@ -664,12 +961,15 @@ define('resources/value-converters/date',['exports', 'moment'], function (export
     return DateValueConverter;
   }();
 });
+define('text!login/login.html', ['module'], function(module) { module.exports = "<template><div class=\"login\"><div class=\"row\"><div class=\"col-md-4 col-md-offset-4 logo\"></div></div><div class=\"row\"><div class=\"col-md-4 col-md-offset-4 well\"><div show.bind=\"message\" class=\"alert alert-danger\">${message}</div><form submit.trigger=\"login()\" role=\"form\" class=\"form-horizontal\"><div class=\"form-group\"><label class=\"col-sm-2 control-label\">Username</label><div class=\"col-sm-10\"><input value.bind=\"username\" type=\"text\" class=\"form-control\" placeholder=\"username\"></div></div><div class=\"form-group\"><label class=\"col-sm-2 control-label\">Password</label><div class=\"col-sm-10\"><input value.bind=\"password\" type=\"password\" class=\"form-control\" placeholder=\"password\"></div></div><div class=\"form-group\"><div disable.bind=\"!username || !password\" class=\"col-sm-offset-2 col-sm-10 text-right\"><button type=\"submit\" class=\"btn btn-success\">Log In</button></div></div></form></div></div></div></template>"; });
 define('text!home/activity-list.html', ['module'], function(module) { module.exports = "<template bindable=\"activity\"><ul><li repeat.for=\"a of activity\" class=\"activity\"><a route-href=\"route.bind: a.type | activityTypeToRoute; params.bind: { id: a.associatedId }\"><div class=\"well\"><div class=\"avatar\"><img src=\"${a.createdBy.iconUrl}\"></div><div class=\"body\"><div class=\"title\" innerhtml.bind=\"a.title\"></div><div class=\"content\">${a.content}</div><div class=\"date\">${a.createdAt | date}</div></div></div></a></li></ul></template>"; });
 define('text!home/home.html', ['module'], function(module) { module.exports = "<template><require from=\"./activity-list.html\"></require><require from=\"./news-list.html\"></require><div><div class=\"header\"><div class=\"header-left\">Activity</div><div class=\"header-right\">Benchmarks &amp; News</div></div><div class=\"sidebar\"><activity-list activity.bind=\"activity\"></activity-list></div><div class=\"detail-container\"><div class=\"row1x2\"></div><div class=\"row2x2\"><news-list news.bind=\"news\"></news-list></div></div></div></template>"; });
-define('text!login/login.html', ['module'], function(module) { module.exports = "<template><div class=\"login\"><div class=\"row\"><div class=\"col-md-4 col-md-offset-4 logo\"></div></div><div class=\"row\"><div class=\"col-md-4 col-md-offset-4 well\"><div show.bind=\"message\" class=\"alert alert-danger\">${message}</div><form submit.trigger=\"login()\" role=\"form\" class=\"form-horizontal\"><div class=\"form-group\"><label class=\"col-sm-2 control-label\">Username</label><div class=\"col-sm-10\"><input value.bind=\"username\" type=\"text\" class=\"form-control\" placeholder=\"username\"></div></div><div class=\"form-group\"><label class=\"col-sm-2 control-label\">Password</label><div class=\"col-sm-10\"><input value.bind=\"password\" type=\"password\" class=\"form-control\" placeholder=\"password\"></div></div><div class=\"form-group\"><div disable.bind=\"!username || !password\" class=\"col-sm-offset-2 col-sm-10 text-right\"><button type=\"submit\" class=\"btn btn-success\">Log In</button></div></div></form></div></div></div></template>"; });
+define('text!home/news-list.html', ['module'], function(module) { module.exports = "<template bindable=\"news\" class=\"news\"><template repeat.for=\"item of news\"><h1>${item.title}</h1><p>${item.content}</p><div><span class=\"badge badge-success\">${item.createdAt | date}</span><div class=\"pull-right\"><span class=\"badge\" repeat.for=\"tag of item.tags\">${tag}</span></div></div><hr></template></template>"; });
 define('text!shell/activity-list.html', ['module'], function(module) { module.exports = "<template bindable=\"activity\"><ul><li repeat.for=\"a of activity\" class=\"activity\"><a route-href=\"route.bind: a.type | activityTypeToRoute; params.bind: { id: a.associatedId }\"><div class=\"well\"><div class=\"avatar\"><img src=\"${a.createdBy.iconUrl}\"></div><div class=\"body\"><div class=\"title\" innerhtml.bind=\"a.title\"></div><div class=\"content\">${a.content}</div><div class=\"date\">${a.createdAt}</div></div></div></a></li></ul></template>"; });
 define('text!shell/header.html', ['module'], function(module) { module.exports = "<template><nav class=\"navbar navbar-default navbar-fixed-top\" role=\"navigation\"><ul class=\"nav navbar-nav tabs\"><li class=\"dropdown add\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-plus\"></i>add</a><ul class=\"dropdown-menu\"><li><a route-href=\"route: thread; params.bind: { id:'new' }\"><i class=\"icon-ticket\"></i> New Ticket</a></li><li><a route-href=\"route: user; params.bind: { id:'new' }\"><i class=\"icon-group\"></i> New User</a></li></ul></li></ul><ul class=\"nav navbar-nav navbar-right\"><li class=\"dropdown\"><a href=\"#\" class=\"avatar dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"${user.iconUrl}\" title.bind=\"user.username\"> <b class=\"caret\"></b></a><ul class=\"dropdown-menu\" role=\"menu\"><li role=\"presentation\"><a route-href=\"route: settings\"><i class=\"fa fa-cog\"></i> Settings</a></li><li role=\"presentation\"><a route-href=\"route: help\"><i class=\"fa fa-envelope\"></i> Help</a></li><li role=\"presentation\" class=\"divider\"></li><li role=\"presentation\"><a href=\"#\" click.trigger=\"logout()\"><i class=\"fa fa-power-off\"></i> Logout</a></li></ul></li></ul></nav></template>"; });
 define('text!shell/shell.html', ['module'], function(module) { module.exports = "<template><compose view=\"./header.html\"></compose><compose view=\"./sidebar.html\"></compose><div class=\"page-host\"><router-view></router-view></div></template>"; });
 define('text!shell/sidebar.html', ['module'], function(module) { module.exports = "<template><div class=\"main-nav\"><ul class=\"nav nav-list\"><li repeat.for=\"nav of router.navigation\" class=\"${nav.isActive ? 'active' : ''}\"><a href.bind=\"nav.href\"><i class=\"fa ${nav.settings.iconClass}\"></i></a></li></ul></div></template>"; });
-define('text!home/news-list.html', ['module'], function(module) { module.exports = "<template bindable=\"news\" class=\"news\"><template repeat.for=\"item of news\"><h1>${item.title}</h1><p>${item.content}</p><div><span class=\"badge badge-success\">${item.createdAt | date}</span><div class=\"pull-right\"><span class=\"badge\" repeat.for=\"tag of item.tags\">${tag}</span></div></div><hr></template></template>"; });
+define('text!tickets/thread.html', ['module'], function(module) { module.exports = "<template>This is a ticket ${ticket.id}.</template>"; });
+define('text!resources/dialogs/message-box.html', ['module'], function(module) { module.exports = "<template><ai-dialog style=\"max-width:325px\"><ai-dialog-header>${model.title}</ai-dialog-header><ai-dialog-body>${model.message}</ai-dialog-body><ai-dialog-footer><button repeat.for=\"option of model.options\" click.trigger=\"selectOption(option)\">${option}</button></ai-dialog-footer></ai-dialog></template>"; });
+define('text!resources/dialogs/prompt.html', ['module'], function(module) { module.exports = "<template><ai-dialog><ai-dialog-header>${model.title}</ai-dialog-header><ai-dialog-body><p>${model.message}</p><form submit.trigger=\"ok()\"><input value.bind=\"answer\" type=\"text\" class=\"form-control\" attach-focus=\"true\"></form></ai-dialog-body><ai-dialog-footer><button click.trigger=\"cancel()\">Cancel</button> <button click.trigger=\"ok()\" disabled.bind=\"!answer\">Ok</button>!</ai-dialog-footer></ai-dialog></template>"; });
 //# sourceMappingURL=app-bundle.js.map
