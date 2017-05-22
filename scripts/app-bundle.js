@@ -559,7 +559,7 @@ define('shell/routes',['exports'], function (exports) {
     moduleId: 'help/help'
   }];
 });
-define('shell/shell',['exports', 'aurelia-framework', 'backend/server', './routes'], function (exports, _aureliaFramework, _server, _routes) {
+define('shell/shell',['exports', 'aurelia-framework', 'backend/server', 'resources/messages/tab-opened', './routes'], function (exports, _aureliaFramework, _server, _tabOpened, _routes) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -583,16 +583,86 @@ define('shell/shell',['exports', 'aurelia-framework', 'backend/server', './route
 
   var _dec, _class;
 
-  var Shell = exports.Shell = (_dec = (0, _aureliaFramework.inject)(_server.User), _dec(_class = function () {
-    function Shell(user) {
+  var Shell = exports.Shell = (_dec = (0, _aureliaFramework.inject)(_aureliaFramework.Aurelia, _server.User), _dec(_class = function () {
+    function Shell(aurelia, user) {
       _classCallCheck(this, Shell);
 
+      this.aurelia = aurelia;
       this.user = user;
+      this.tabs = [];
     }
 
     Shell.prototype.configureRouter = function configureRouter(config, router) {
       this.router = router;
       config.map(_routes2.default);
+    };
+
+    Shell.prototype.bind = function bind() {
+      var _this = this;
+
+      this.navigationCompleteSub = this.aurelia.subscribe('router:navigation:complete', function (msg) {
+        return _this.onNavigationComplete(msg);
+      });
+      this.tabOpenedSub = this.aurelia.subscribe(_tabOpened.TabOpened, function (msg) {
+        return _this.onTabOpened(msg);
+      });
+    };
+
+    Shell.prototype.unbind = function unbind() {
+      this.navigationCompleteSub.dispose();
+      this.tabOpenedSub.dispose();
+    };
+
+    Shell.prototype.closeTab = function closeTab(tab) {
+      var index = this.tabs.indexOf(tab);
+
+      if (index === -1) {
+        return;
+      }
+
+      this.tabs.splice(index, 1);
+
+      if (!tab.isActive) {
+        return;
+      }
+
+      var next = this.tabs[0];
+
+      if (next) {
+        this.router.navigateToRoute(next.route, next.params, true);
+      } else {
+        this.router.navigateToRoute('home', true);
+      }
+    };
+
+    Shell.prototype.logout = function logout() {};
+
+    Shell.prototype._doLogout = function _doLogout() {
+      this.aurelia.setRoot('login/login');
+      this.aurelia.container.unregister(_server.User);
+      this.router.reset();
+      this.router.deactivate();
+      this.tabs = [];
+    };
+
+    Shell.prototype.onTabOpened = function onTabOpened(tab) {
+      var existing = this.tabs.find(function (x) {
+        return x.matches(tab);
+      });
+
+      if (!existing) {
+        this.tabs.push(tab);
+      }
+    };
+
+    Shell.prototype.onNavigationComplete = function onNavigationComplete(msg) {
+      if (!msg.result.completed) {
+        return;
+      }
+
+      this.tabs.forEach(function (x) {
+        return x.updateActivation(msg.instruction);
+      });
     };
 
     return Shell;
@@ -966,7 +1036,7 @@ define('text!home/activity-list.html', ['module'], function(module) { module.exp
 define('text!home/home.html', ['module'], function(module) { module.exports = "<template><require from=\"./activity-list.html\"></require><require from=\"./news-list.html\"></require><div><div class=\"header\"><div class=\"header-left\">Activity</div><div class=\"header-right\">Benchmarks &amp; News</div></div><div class=\"sidebar\"><activity-list activity.bind=\"activity\"></activity-list></div><div class=\"detail-container\"><div class=\"row1x2\"></div><div class=\"row2x2\"><news-list news.bind=\"news\"></news-list></div></div></div></template>"; });
 define('text!home/news-list.html', ['module'], function(module) { module.exports = "<template bindable=\"news\" class=\"news\"><template repeat.for=\"item of news\"><h1>${item.title}</h1><p>${item.content}</p><div><span class=\"badge badge-success\">${item.createdAt | date}</span><div class=\"pull-right\"><span class=\"badge\" repeat.for=\"tag of item.tags\">${tag}</span></div></div><hr></template></template>"; });
 define('text!shell/activity-list.html', ['module'], function(module) { module.exports = "<template bindable=\"activity\"><ul><li repeat.for=\"a of activity\" class=\"activity\"><a route-href=\"route.bind: a.type | activityTypeToRoute; params.bind: { id: a.associatedId }\"><div class=\"well\"><div class=\"avatar\"><img src=\"${a.createdBy.iconUrl}\"></div><div class=\"body\"><div class=\"title\" innerhtml.bind=\"a.title\"></div><div class=\"content\">${a.content}</div><div class=\"date\">${a.createdAt}</div></div></div></a></li></ul></template>"; });
-define('text!shell/header.html', ['module'], function(module) { module.exports = "<template><nav class=\"navbar navbar-default navbar-fixed-top\" role=\"navigation\"><ul class=\"nav navbar-nav tabs\"><li class=\"dropdown add\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-plus\"></i>add</a><ul class=\"dropdown-menu\"><li><a route-href=\"route: thread; params.bind: { id:'new' }\"><i class=\"icon-ticket\"></i> New Ticket</a></li><li><a route-href=\"route: user; params.bind: { id:'new' }\"><i class=\"icon-group\"></i> New User</a></li></ul></li></ul><ul class=\"nav navbar-nav navbar-right\"><li class=\"dropdown\"><a href=\"#\" class=\"avatar dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"${user.iconUrl}\" title.bind=\"user.username\"> <b class=\"caret\"></b></a><ul class=\"dropdown-menu\" role=\"menu\"><li role=\"presentation\"><a route-href=\"route: settings\"><i class=\"fa fa-cog\"></i> Settings</a></li><li role=\"presentation\"><a route-href=\"route: help\"><i class=\"fa fa-envelope\"></i> Help</a></li><li role=\"presentation\" class=\"divider\"></li><li role=\"presentation\"><a href=\"#\" click.trigger=\"logout()\"><i class=\"fa fa-power-off\"></i> Logout</a></li></ul></li></ul></nav></template>"; });
+define('text!shell/header.html', ['module'], function(module) { module.exports = "<template><nav class=\"navbar navbar-default navbar-fixed-top\" role=\"navigation\"><ul class=\"nav navbar-nav tabs\"><li repeat.for=\"tab of tabs\" class=\"${tab.isActive ? 'active' : ''}\"><a route-href=\"route.bind: tab.route; params.bind: tab.params\">${tab.title}</a> <a href=\"#\" click.trigger=\"closeTab(tab)\"><i class=\"fa fa-times\"></i></a></li><li class=\"dropdown add\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><i class=\"fa fa-plus\"></i>add</a><ul class=\"dropdown-menu\"><li><a route-href=\"route: thread; params.bind: { id:'new' }\"><i class=\"icon-ticket\"></i> New Ticket</a></li><li><a route-href=\"route: user; params.bind: { id:'new' }\"><i class=\"icon-group\"></i> New User</a></li></ul></li></ul><ul class=\"nav navbar-nav navbar-right\"><li class=\"dropdown\"><a href=\"#\" class=\"avatar dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"${user.iconUrl}\" title.bind=\"user.username\"> <b class=\"caret\"></b></a><ul class=\"dropdown-menu\" role=\"menu\"><li role=\"presentation\"><a route-href=\"route: settings\"><i class=\"fa fa-cog\"></i> Settings</a></li><li role=\"presentation\"><a route-href=\"route: help\"><i class=\"fa fa-envelope\"></i> Help</a></li><li role=\"presentation\" class=\"divider\"></li><li role=\"presentation\"><a href=\"#\" click.trigger=\"logout()\"><i class=\"fa fa-power-off\"></i> Logout</a></li></ul></li></ul></nav></template>"; });
 define('text!shell/shell.html', ['module'], function(module) { module.exports = "<template><compose view=\"./header.html\"></compose><compose view=\"./sidebar.html\"></compose><div class=\"page-host\"><router-view></router-view></div></template>"; });
 define('text!shell/sidebar.html', ['module'], function(module) { module.exports = "<template><div class=\"main-nav\"><ul class=\"nav nav-list\"><li repeat.for=\"nav of router.navigation\" class=\"${nav.isActive ? 'active' : ''}\"><a href.bind=\"nav.href\"><i class=\"fa ${nav.settings.iconClass}\"></i></a></li></ul></div></template>"; });
 define('text!tickets/thread.html', ['module'], function(module) { module.exports = "<template>This is a ticket ${ticket.id}.</template>"; });
