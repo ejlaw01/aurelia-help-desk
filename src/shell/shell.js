@@ -1,4 +1,4 @@
-import {inject} from 'aurelia-framework';
+import {inject, Aurelia} from 'aurelia-framework';
 import {User} from 'backend/server';
 import routes from './routes';
 

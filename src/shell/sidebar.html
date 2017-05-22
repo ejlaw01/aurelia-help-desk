@@ -1,7 +1,4 @@
 <template>
-
-  <compose view="./sidebar.html"></compose>
-
   <div class="main-nav">
     <ul class="nav nav-list">
       <li repeat.for="nav of router.navigation" class="${nav.isActive ? 'active' : ''}"> <!--One li per item in router.navigation; apply the active class if items.isActive-->
