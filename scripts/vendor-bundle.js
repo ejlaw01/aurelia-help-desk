@@ -32701,4 +32701,1677 @@ define('aurelia-dialog/dialog-service',["require", "exports", "aurelia-dependenc
     }
 });
 
-function _aureliaConfigureModuleLoader(){requirejs.config({"baseUrl":"src/","paths":{"aurelia-binding":"../node_modules/aurelia-binding/dist/amd/aurelia-binding","aurelia-dependency-injection":"../node_modules/aurelia-dependency-injection/dist/amd/aurelia-dependency-injection","aurelia-bootstrapper":"../node_modules/aurelia-bootstrapper/dist/amd/aurelia-bootstrapper","aurelia-event-aggregator":"../node_modules/aurelia-event-aggregator/dist/amd/aurelia-event-aggregator","aurelia-framework":"../node_modules/aurelia-framework/dist/amd/aurelia-framework","aurelia-history":"../node_modules/aurelia-history/dist/amd/aurelia-history","aurelia-history-browser":"../node_modules/aurelia-history-browser/dist/amd/aurelia-history-browser","aurelia-loader-default":"../node_modules/aurelia-loader-default/dist/amd/aurelia-loader-default","aurelia-loader":"../node_modules/aurelia-loader/dist/amd/aurelia-loader","aurelia-logging":"../node_modules/aurelia-logging/dist/amd/aurelia-logging","aurelia-logging-console":"../node_modules/aurelia-logging-console/dist/amd/aurelia-logging-console","aurelia-metadata":"../node_modules/aurelia-metadata/dist/amd/aurelia-metadata","aurelia-pal":"../node_modules/aurelia-pal/dist/amd/aurelia-pal","aurelia-pal-browser":"../node_modules/aurelia-pal-browser/dist/amd/aurelia-pal-browser","aurelia-path":"../node_modules/aurelia-path/dist/amd/aurelia-path","aurelia-polyfills":"../node_modules/aurelia-polyfills/dist/amd/aurelia-polyfills","aurelia-route-recognizer":"../node_modules/aurelia-route-recognizer/dist/amd/aurelia-route-recognizer","aurelia-router":"../node_modules/aurelia-router/dist/amd/aurelia-router","aurelia-task-queue":"../node_modules/aurelia-task-queue/dist/amd/aurelia-task-queue","aurelia-templating":"../node_modules/aurelia-templating/dist/amd/aurelia-templating","text":"../node_modules/text/text","aurelia-templating-binding":"../node_modules/aurelia-templating-binding/dist/amd/aurelia-templating-binding","moment":"../node_modules/moment/moment","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-dialog","location":"../node_modules/aurelia-dialog/dist/amd","main":"aurelia-dialog"}],"stubModules":["text"],"shim":{},"bundles":{"app-bundle":["environment","main","backend/lorem","backend/server","login/login","home/home","resources/index","shell/routes","shell/shell","tickets/thread","resources/dialogs/common-dialogs","resources/dialogs/message-box","resources/dialogs/prompt","resources/messages/tab-opened","resources/value-converters/activity-type-to-route","resources/value-converters/date","home/activity-list","home/news-list","shell/activity-list","shell/header","shell/sidebar"]}})}
+/*!
+ * Chart.js
+ * http://chartjs.org/
+ * Version: 1.1.1
+ *
+ * Copyright 2015 Nick Downie
+ * Released under the MIT license
+ * https://github.com/nnnick/Chart.js/blob/master/LICENSE.md
+ */
+(function(){"use strict";var t=this,i=t.Chart,e=function(t){this.canvas=t.canvas,this.ctx=t;var i=function(t,i){return t["offset"+i]?t["offset"+i]:document.defaultView.getComputedStyle(t).getPropertyValue(i)};this.width=i(t.canvas,"Width")||t.canvas.width,this.height=i(t.canvas,"Height")||t.canvas.height;return this.aspectRatio=this.width/this.height,s.retinaScale(this),this};e.defaults={global:{animation:!0,animationSteps:60,animationEasing:"easeOutQuart",showScale:!0,scaleOverride:!1,scaleSteps:null,scaleStepWidth:null,scaleStartValue:null,scaleLineColor:"rgba(0,0,0,.1)",scaleLineWidth:1,scaleShowLabels:!0,scaleLabel:"<%=value%>",scaleIntegersOnly:!0,scaleBeginAtZero:!1,scaleFontFamily:"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",scaleFontSize:12,scaleFontStyle:"normal",scaleFontColor:"#666",responsive:!1,maintainAspectRatio:!0,showTooltips:!0,customTooltips:!1,tooltipEvents:["mousemove","touchstart","touchmove","mouseout"],tooltipFillColor:"rgba(0,0,0,0.8)",tooltipFontFamily:"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",tooltipFontSize:14,tooltipFontStyle:"normal",tooltipFontColor:"#fff",tooltipTitleFontFamily:"'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",tooltipTitleFontSize:14,tooltipTitleFontStyle:"bold",tooltipTitleFontColor:"#fff",tooltipTitleTemplate:"<%= label%>",tooltipYPadding:6,tooltipXPadding:6,tooltipCaretSize:8,tooltipCornerRadius:6,tooltipXOffset:10,tooltipTemplate:"<%if (label){%><%=label%>: <%}%><%= value %>",multiTooltipTemplate:"<%= datasetLabel %>: <%= value %>",multiTooltipKeyBackground:"#fff",segmentColorDefault:["#A6CEE3","#1F78B4","#B2DF8A","#33A02C","#FB9A99","#E31A1C","#FDBF6F","#FF7F00","#CAB2D6","#6A3D9A","#B4B482","#B15928"],segmentHighlightColorDefaults:["#CEF6FF","#47A0DC","#DAFFB2","#5BC854","#FFC2C1","#FF4244","#FFE797","#FFA728","#F2DAFE","#9265C2","#DCDCAA","#D98150"],onAnimationProgress:function(){},onAnimationComplete:function(){}}},e.types={};var s=e.helpers={},n=s.each=function(t,i,e){var s=Array.prototype.slice.call(arguments,3);if(t)if(t.length===+t.length){var n;for(n=0;n<t.length;n++)i.apply(e,[t[n],n].concat(s))}else for(var o in t)i.apply(e,[t[o],o].concat(s))},o=s.clone=function(t){var i={};return n(t,function(e,s){t.hasOwnProperty(s)&&(i[s]=e)}),i},a=s.extend=function(t){return n(Array.prototype.slice.call(arguments,1),function(i){n(i,function(e,s){i.hasOwnProperty(s)&&(t[s]=e)})}),t},h=s.merge=function(t,i){var e=Array.prototype.slice.call(arguments,0);return e.unshift({}),a.apply(null,e)},l=s.indexOf=function(t,i){if(Array.prototype.indexOf)return t.indexOf(i);for(var e=0;e<t.length;e++)if(t[e]===i)return e;return-1},r=(s.where=function(t,i){var e=[];return s.each(t,function(t){i(t)&&e.push(t)}),e},s.findNextWhere=function(t,i,e){e||(e=-1);for(var s=e+1;s<t.length;s++){var n=t[s];if(i(n))return n}},s.findPreviousWhere=function(t,i,e){e||(e=t.length);for(var s=e-1;s>=0;s--){var n=t[s];if(i(n))return n}},s.inherits=function(t){var i=this,e=t&&t.hasOwnProperty("constructor")?t.constructor:function(){return i.apply(this,arguments)},s=function(){this.constructor=e};return s.prototype=i.prototype,e.prototype=new s,e.extend=r,t&&a(e.prototype,t),e.__super__=i.prototype,e}),c=s.noop=function(){},u=s.uid=function(){var t=0;return function(){return"chart-"+t++}}(),d=s.warn=function(t){window.console&&"function"==typeof window.console.warn&&console.warn(t)},p=s.amd="function"==typeof define&&define.amd,f=s.isNumber=function(t){return!isNaN(parseFloat(t))&&isFinite(t)},g=s.max=function(t){return Math.max.apply(Math,t)},m=s.min=function(t){return Math.min.apply(Math,t)},v=(s.cap=function(t,i,e){if(f(i)){if(t>i)return i}else if(f(e)&&e>t)return e;return t},s.getDecimalPlaces=function(t){if(t%1!==0&&f(t)){var i=t.toString();if(i.indexOf("e-")<0)return i.split(".")[1].length;if(i.indexOf(".")<0)return parseInt(i.split("e-")[1]);var e=i.split(".")[1].split("e-");return e[0].length+parseInt(e[1])}return 0}),S=s.radians=function(t){return t*(Math.PI/180)},C=(s.getAngleFromPoint=function(t,i){var e=i.x-t.x,s=i.y-t.y,n=Math.sqrt(e*e+s*s),o=2*Math.PI+Math.atan2(s,e);return 0>e&&0>s&&(o+=2*Math.PI),{angle:o,distance:n}},s.aliasPixel=function(t){return t%2===0?0:.5}),x=(s.splineCurve=function(t,i,e,s){var n=Math.sqrt(Math.pow(i.x-t.x,2)+Math.pow(i.y-t.y,2)),o=Math.sqrt(Math.pow(e.x-i.x,2)+Math.pow(e.y-i.y,2)),a=s*n/(n+o),h=s*o/(n+o);return{inner:{x:i.x-a*(e.x-t.x),y:i.y-a*(e.y-t.y)},outer:{x:i.x+h*(e.x-t.x),y:i.y+h*(e.y-t.y)}}},s.calculateOrderOfMagnitude=function(t){return Math.floor(Math.log(t)/Math.LN10)}),y=(s.calculateScaleRange=function(t,i,e,s,o){var a=2,h=Math.floor(i/(1.5*e)),l=a>=h,r=[];n(t,function(t){null==t||r.push(t)});var c=m(r),u=g(r);u===c&&(u+=.5,c>=.5&&!s?c-=.5:u+=.5);for(var d=Math.abs(u-c),p=x(d),f=Math.ceil(u/(1*Math.pow(10,p)))*Math.pow(10,p),v=s?0:Math.floor(c/(1*Math.pow(10,p)))*Math.pow(10,p),S=f-v,C=Math.pow(10,p),y=Math.round(S/C);(y>h||h>2*y)&&!l;)if(y>h)C*=2,y=Math.round(S/C),y%1!==0&&(l=!0);else if(o&&p>=0){if(C/2%1!==0)break;C/=2,y=Math.round(S/C)}else C/=2,y=Math.round(S/C);return l&&(y=a,C=S/y),{steps:y,stepValue:C,min:v,max:v+y*C}},s.template=function(t,i){function e(t,i){var e=/\W/.test(t)?new Function("obj","var p=[],print=function(){p.push.apply(p,arguments);};with(obj){p.push('"+t.replace(/[\r\t\n]/g," ").split("<%").join("	").replace(/((^|%>)[^\t]*)'/g,"$1\r").replace(/\t=(.*?)%>/g,"',$1,'").split("	").join("');").split("%>").join("p.push('").split("\r").join("\\'")+"');}return p.join('');"):s[t]=s[t];return i?e(i):e}if(t instanceof Function)return t(i);var s={};return e(t,i)}),b=(s.generateLabels=function(t,i,e,s){var o=new Array(i);return t&&n(o,function(i,n){o[n]=y(t,{value:e+s*(n+1)})}),o},s.easingEffects={linear:function(t){return t},easeInQuad:function(t){return t*t},easeOutQuad:function(t){return-1*t*(t-2)},easeInOutQuad:function(t){return(t/=.5)<1?.5*t*t:-0.5*(--t*(t-2)-1)},easeInCubic:function(t){return t*t*t},easeOutCubic:function(t){return 1*((t=t/1-1)*t*t+1)},easeInOutCubic:function(t){return(t/=.5)<1?.5*t*t*t:.5*((t-=2)*t*t+2)},easeInQuart:function(t){return t*t*t*t},easeOutQuart:function(t){return-1*((t=t/1-1)*t*t*t-1)},easeInOutQuart:function(t){return(t/=.5)<1?.5*t*t*t*t:-0.5*((t-=2)*t*t*t-2)},easeInQuint:function(t){return 1*(t/=1)*t*t*t*t},easeOutQuint:function(t){return 1*((t=t/1-1)*t*t*t*t+1)},easeInOutQuint:function(t){return(t/=.5)<1?.5*t*t*t*t*t:.5*((t-=2)*t*t*t*t+2)},easeInSine:function(t){return-1*Math.cos(t/1*(Math.PI/2))+1},easeOutSine:function(t){return 1*Math.sin(t/1*(Math.PI/2))},easeInOutSine:function(t){return-0.5*(Math.cos(Math.PI*t/1)-1)},easeInExpo:function(t){return 0===t?1:1*Math.pow(2,10*(t/1-1))},easeOutExpo:function(t){return 1===t?1:1*(-Math.pow(2,-10*t/1)+1)},easeInOutExpo:function(t){return 0===t?0:1===t?1:(t/=.5)<1?.5*Math.pow(2,10*(t-1)):.5*(-Math.pow(2,-10*--t)+2)},easeInCirc:function(t){return t>=1?t:-1*(Math.sqrt(1-(t/=1)*t)-1)},easeOutCirc:function(t){return 1*Math.sqrt(1-(t=t/1-1)*t)},easeInOutCirc:function(t){return(t/=.5)<1?-0.5*(Math.sqrt(1-t*t)-1):.5*(Math.sqrt(1-(t-=2)*t)+1)},easeInElastic:function(t){var i=1.70158,e=0,s=1;return 0===t?0:1==(t/=1)?1:(e||(e=.3),s<Math.abs(1)?(s=1,i=e/4):i=e/(2*Math.PI)*Math.asin(1/s),-(s*Math.pow(2,10*(t-=1))*Math.sin((1*t-i)*(2*Math.PI)/e)))},easeOutElastic:function(t){var i=1.70158,e=0,s=1;return 0===t?0:1==(t/=1)?1:(e||(e=.3),s<Math.abs(1)?(s=1,i=e/4):i=e/(2*Math.PI)*Math.asin(1/s),s*Math.pow(2,-10*t)*Math.sin((1*t-i)*(2*Math.PI)/e)+1)},easeInOutElastic:function(t){var i=1.70158,e=0,s=1;return 0===t?0:2==(t/=.5)?1:(e||(e=1*(.3*1.5)),s<Math.abs(1)?(s=1,i=e/4):i=e/(2*Math.PI)*Math.asin(1/s),1>t?-.5*(s*Math.pow(2,10*(t-=1))*Math.sin((1*t-i)*(2*Math.PI)/e)):s*Math.pow(2,-10*(t-=1))*Math.sin((1*t-i)*(2*Math.PI)/e)*.5+1)},easeInBack:function(t){var i=1.70158;return 1*(t/=1)*t*((i+1)*t-i)},easeOutBack:function(t){var i=1.70158;return 1*((t=t/1-1)*t*((i+1)*t+i)+1)},easeInOutBack:function(t){var i=1.70158;return(t/=.5)<1?.5*(t*t*(((i*=1.525)+1)*t-i)):.5*((t-=2)*t*(((i*=1.525)+1)*t+i)+2)},easeInBounce:function(t){return 1-b.easeOutBounce(1-t)},easeOutBounce:function(t){return(t/=1)<1/2.75?1*(7.5625*t*t):2/2.75>t?1*(7.5625*(t-=1.5/2.75)*t+.75):2.5/2.75>t?1*(7.5625*(t-=2.25/2.75)*t+.9375):1*(7.5625*(t-=2.625/2.75)*t+.984375)},easeInOutBounce:function(t){return.5>t?.5*b.easeInBounce(2*t):.5*b.easeOutBounce(2*t-1)+.5}}),w=s.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(t){return window.setTimeout(t,1e3/60)}}(),P=(s.cancelAnimFrame=function(){return window.cancelAnimationFrame||window.webkitCancelAnimationFrame||window.mozCancelAnimationFrame||window.oCancelAnimationFrame||window.msCancelAnimationFrame||function(t){return window.clearTimeout(t,1e3/60)}}(),s.animationLoop=function(t,i,e,s,n,o){var a=0,h=b[e]||b.linear,l=function(){a++;var e=a/i,r=h(e);t.call(o,r,e,a),s.call(o,r,e),i>a?o.animationFrame=w(l):n.apply(o)};w(l)},s.getRelativePosition=function(t){var i,e,s=t.originalEvent||t,n=t.currentTarget||t.srcElement,o=n.getBoundingClientRect();return s.touches?(i=s.touches[0].clientX-o.left,e=s.touches[0].clientY-o.top):(i=s.clientX-o.left,e=s.clientY-o.top),{x:i,y:e}},s.addEvent=function(t,i,e){t.addEventListener?t.addEventListener(i,e):t.attachEvent?t.attachEvent("on"+i,e):t["on"+i]=e}),L=s.removeEvent=function(t,i,e){t.removeEventListener?t.removeEventListener(i,e,!1):t.detachEvent?t.detachEvent("on"+i,e):t["on"+i]=c},k=(s.bindEvents=function(t,i,e){t.events||(t.events={}),n(i,function(i){t.events[i]=function(){e.apply(t,arguments)},P(t.chart.canvas,i,t.events[i])})},s.unbindEvents=function(t,i){n(i,function(i,e){L(t.chart.canvas,e,i)})}),F=s.getMaximumWidth=function(t){var i=t.parentNode,e=parseInt(R(i,"padding-left"))+parseInt(R(i,"padding-right"));return i?i.clientWidth-e:0},A=s.getMaximumHeight=function(t){var i=t.parentNode,e=parseInt(R(i,"padding-bottom"))+parseInt(R(i,"padding-top"));return i?i.clientHeight-e:0},R=s.getStyle=function(t,i){return t.currentStyle?t.currentStyle[i]:document.defaultView.getComputedStyle(t,null).getPropertyValue(i)},T=(s.getMaximumSize=s.getMaximumWidth,s.retinaScale=function(t){var i=t.ctx,e=t.canvas.width,s=t.canvas.height;window.devicePixelRatio&&(i.canvas.style.width=e+"px",i.canvas.style.height=s+"px",i.canvas.height=s*window.devicePixelRatio,i.canvas.width=e*window.devicePixelRatio,i.scale(window.devicePixelRatio,window.devicePixelRatio))}),M=s.clear=function(t){t.ctx.clearRect(0,0,t.width,t.height)},W=s.fontString=function(t,i,e){return i+" "+t+"px "+e},z=s.longestText=function(t,i,e){t.font=i;var s=0;return n(e,function(i){var e=t.measureText(i).width;s=e>s?e:s}),s},B=s.drawRoundedRectangle=function(t,i,e,s,n,o){t.beginPath(),t.moveTo(i+o,e),t.lineTo(i+s-o,e),t.quadraticCurveTo(i+s,e,i+s,e+o),t.lineTo(i+s,e+n-o),t.quadraticCurveTo(i+s,e+n,i+s-o,e+n),t.lineTo(i+o,e+n),t.quadraticCurveTo(i,e+n,i,e+n-o),t.lineTo(i,e+o),t.quadraticCurveTo(i,e,i+o,e),t.closePath()};e.instances={},e.Type=function(t,i,s){this.options=i,this.chart=s,this.id=u(),e.instances[this.id]=this,i.responsive&&this.resize(),this.initialize.call(this,t)},a(e.Type.prototype,{initialize:function(){return this},clear:function(){return M(this.chart),this},stop:function(){return e.animationService.cancelAnimation(this),this},resize:function(t){this.stop();var i=this.chart.canvas,e=F(this.chart.canvas),s=this.options.maintainAspectRatio?e/this.chart.aspectRatio:A(this.chart.canvas);return i.width=this.chart.width=e,i.height=this.chart.height=s,T(this.chart),"function"==typeof t&&t.apply(this,Array.prototype.slice.call(arguments,1)),this},reflow:c,render:function(t){if(t&&this.reflow(),this.options.animation&&!t){var i=new e.Animation;i.numSteps=this.options.animationSteps,i.easing=this.options.animationEasing,i.render=function(t,i){var e=s.easingEffects[i.easing],n=i.currentStep/i.numSteps,o=e(n);t.draw(o,n,i.currentStep)},i.onAnimationProgress=this.options.onAnimationProgress,i.onAnimationComplete=this.options.onAnimationComplete,e.animationService.addAnimation(this,i)}else this.draw(),this.options.onAnimationComplete.call(this);return this},generateLegend:function(){return s.template(this.options.legendTemplate,this)},destroy:function(){this.stop(),this.clear(),k(this,this.events);var t=this.chart.canvas;t.width=this.chart.width,t.height=this.chart.height,t.style.removeProperty?(t.style.removeProperty("width"),t.style.removeProperty("height")):(t.style.removeAttribute("width"),t.style.removeAttribute("height")),delete e.instances[this.id]},showTooltip:function(t,i){"undefined"==typeof this.activeElements&&(this.activeElements=[]);var o=function(t){var i=!1;return t.length!==this.activeElements.length?i=!0:(n(t,function(t,e){t!==this.activeElements[e]&&(i=!0)},this),i)}.call(this,t);if(o||i){if(this.activeElements=t,this.draw(),this.options.customTooltips&&this.options.customTooltips(!1),t.length>0)if(this.datasets&&this.datasets.length>1){for(var a,h,r=this.datasets.length-1;r>=0&&(a=this.datasets[r].points||this.datasets[r].bars||this.datasets[r].segments,h=l(a,t[0]),-1===h);r--);var c=[],u=[],d=function(t){var i,e,n,o,a,l=[],r=[],d=[];return s.each(this.datasets,function(t){i=t.points||t.bars||t.segments,i[h]&&i[h].hasValue()&&l.push(i[h])}),s.each(l,function(t){r.push(t.x),d.push(t.y),c.push(s.template(this.options.multiTooltipTemplate,t)),u.push({fill:t._saved.fillColor||t.fillColor,stroke:t._saved.strokeColor||t.strokeColor})},this),a=m(d),n=g(d),o=m(r),e=g(r),{x:o>this.chart.width/2?o:e,y:(a+n)/2}}.call(this,h);new e.MultiTooltip({x:d.x,y:d.y,xPadding:this.options.tooltipXPadding,yPadding:this.options.tooltipYPadding,xOffset:this.options.tooltipXOffset,fillColor:this.options.tooltipFillColor,textColor:this.options.tooltipFontColor,fontFamily:this.options.tooltipFontFamily,fontStyle:this.options.tooltipFontStyle,fontSize:this.options.tooltipFontSize,titleTextColor:this.options.tooltipTitleFontColor,titleFontFamily:this.options.tooltipTitleFontFamily,titleFontStyle:this.options.tooltipTitleFontStyle,titleFontSize:this.options.tooltipTitleFontSize,cornerRadius:this.options.tooltipCornerRadius,labels:c,legendColors:u,legendColorBackground:this.options.multiTooltipKeyBackground,title:y(this.options.tooltipTitleTemplate,t[0]),chart:this.chart,ctx:this.chart.ctx,custom:this.options.customTooltips}).draw()}else n(t,function(t){var i=t.tooltipPosition();new e.Tooltip({x:Math.round(i.x),y:Math.round(i.y),xPadding:this.options.tooltipXPadding,yPadding:this.options.tooltipYPadding,fillColor:this.options.tooltipFillColor,textColor:this.options.tooltipFontColor,fontFamily:this.options.tooltipFontFamily,fontStyle:this.options.tooltipFontStyle,fontSize:this.options.tooltipFontSize,caretHeight:this.options.tooltipCaretSize,cornerRadius:this.options.tooltipCornerRadius,text:y(this.options.tooltipTemplate,t),chart:this.chart,custom:this.options.customTooltips}).draw()},this);return this}},toBase64Image:function(){return this.chart.canvas.toDataURL.apply(this.chart.canvas,arguments)}}),e.Type.extend=function(t){var i=this,s=function(){return i.apply(this,arguments)};if(s.prototype=o(i.prototype),a(s.prototype,t),s.extend=e.Type.extend,t.name||i.prototype.name){var n=t.name||i.prototype.name,l=e.defaults[i.prototype.name]?o(e.defaults[i.prototype.name]):{};e.defaults[n]=a(l,t.defaults),e.types[n]=s,e.prototype[n]=function(t,i){var o=h(e.defaults.global,e.defaults[n],i||{});return new s(t,o,this)}}else d("Name not provided for this chart, so it hasn't been registered");return i},e.Element=function(t){a(this,t),this.initialize.apply(this,arguments),this.save()},a(e.Element.prototype,{initialize:function(){},restore:function(t){return t?n(t,function(t){this[t]=this._saved[t]},this):a(this,this._saved),this},save:function(){return this._saved=o(this),delete this._saved._saved,this},update:function(t){return n(t,function(t,i){this._saved[i]=this[i],this[i]=t},this),this},transition:function(t,i){return n(t,function(t,e){this[e]=(t-this._saved[e])*i+this._saved[e]},this),this},tooltipPosition:function(){return{x:this.x,y:this.y}},hasValue:function(){return f(this.value)}}),e.Element.extend=r,e.Point=e.Element.extend({display:!0,inRange:function(t,i){var e=this.hitDetectionRadius+this.radius;return Math.pow(t-this.x,2)+Math.pow(i-this.y,2)<Math.pow(e,2)},draw:function(){if(this.display){var t=this.ctx;t.beginPath(),t.arc(this.x,this.y,this.radius,0,2*Math.PI),t.closePath(),t.strokeStyle=this.strokeColor,t.lineWidth=this.strokeWidth,t.fillStyle=this.fillColor,t.fill(),t.stroke()}}}),e.Arc=e.Element.extend({inRange:function(t,i){var e=s.getAngleFromPoint(this,{x:t,y:i}),n=e.angle%(2*Math.PI),o=(2*Math.PI+this.startAngle)%(2*Math.PI),a=(2*Math.PI+this.endAngle)%(2*Math.PI)||360,h=o>a?a>=n||n>=o:n>=o&&a>=n,l=e.distance>=this.innerRadius&&e.distance<=this.outerRadius;return h&&l},tooltipPosition:function(){var t=this.startAngle+(this.endAngle-this.startAngle)/2,i=(this.outerRadius-this.innerRadius)/2+this.innerRadius;return{x:this.x+Math.cos(t)*i,y:this.y+Math.sin(t)*i}},draw:function(t){var i=this.ctx;i.beginPath(),i.arc(this.x,this.y,this.outerRadius<0?0:this.outerRadius,this.startAngle,this.endAngle),i.arc(this.x,this.y,this.innerRadius<0?0:this.innerRadius,this.endAngle,this.startAngle,!0),i.closePath(),i.strokeStyle=this.strokeColor,i.lineWidth=this.strokeWidth,i.fillStyle=this.fillColor,i.fill(),i.lineJoin="bevel",this.showStroke&&i.stroke()}}),e.Rectangle=e.Element.extend({draw:function(){var t=this.ctx,i=this.width/2,e=this.x-i,s=this.x+i,n=this.base-(this.base-this.y),o=this.strokeWidth/2;this.showStroke&&(e+=o,s-=o,n+=o),t.beginPath(),t.fillStyle=this.fillColor,t.strokeStyle=this.strokeColor,t.lineWidth=this.strokeWidth,t.moveTo(e,this.base),t.lineTo(e,n),t.lineTo(s,n),t.lineTo(s,this.base),t.fill(),this.showStroke&&t.stroke()},height:function(){return this.base-this.y},inRange:function(t,i){return t>=this.x-this.width/2&&t<=this.x+this.width/2&&i>=this.y&&i<=this.base}}),e.Animation=e.Element.extend({currentStep:null,numSteps:60,easing:"",render:null,onAnimationProgress:null,onAnimationComplete:null}),e.Tooltip=e.Element.extend({draw:function(){var t=this.chart.ctx;t.font=W(this.fontSize,this.fontStyle,this.fontFamily),this.xAlign="center",this.yAlign="above";var i=this.caretPadding=2,e=t.measureText(this.text).width+2*this.xPadding,s=this.fontSize+2*this.yPadding,n=s+this.caretHeight+i;this.x+e/2>this.chart.width?this.xAlign="left":this.x-e/2<0&&(this.xAlign="right"),this.y-n<0&&(this.yAlign="below");var o=this.x-e/2,a=this.y-n;if(t.fillStyle=this.fillColor,this.custom)this.custom(this);else{switch(this.yAlign){case"above":t.beginPath(),t.moveTo(this.x,this.y-i),t.lineTo(this.x+this.caretHeight,this.y-(i+this.caretHeight)),t.lineTo(this.x-this.caretHeight,this.y-(i+this.caretHeight)),t.closePath(),t.fill();break;case"below":a=this.y+i+this.caretHeight,t.beginPath(),t.moveTo(this.x,this.y+i),t.lineTo(this.x+this.caretHeight,this.y+i+this.caretHeight),t.lineTo(this.x-this.caretHeight,this.y+i+this.caretHeight),t.closePath(),t.fill()}switch(this.xAlign){case"left":o=this.x-e+(this.cornerRadius+this.caretHeight);break;case"right":o=this.x-(this.cornerRadius+this.caretHeight)}B(t,o,a,e,s,this.cornerRadius),t.fill(),t.fillStyle=this.textColor,t.textAlign="center",t.textBaseline="middle",t.fillText(this.text,o+e/2,a+s/2)}}}),e.MultiTooltip=e.Element.extend({initialize:function(){this.font=W(this.fontSize,this.fontStyle,this.fontFamily),this.titleFont=W(this.titleFontSize,this.titleFontStyle,this.titleFontFamily),this.titleHeight=this.title?1.5*this.titleFontSize:0,this.height=this.labels.length*this.fontSize+(this.labels.length-1)*(this.fontSize/2)+2*this.yPadding+this.titleHeight,this.ctx.font=this.titleFont;var t=this.ctx.measureText(this.title).width,i=z(this.ctx,this.font,this.labels)+this.fontSize+3,e=g([i,t]);this.width=e+2*this.xPadding;var s=this.height/2;this.y-s<0?this.y=s:this.y+s>this.chart.height&&(this.y=this.chart.height-s),this.x>this.chart.width/2?this.x-=this.xOffset+this.width:this.x+=this.xOffset},getLineHeight:function(t){var i=this.y-this.height/2+this.yPadding,e=t-1;return 0===t?i+this.titleHeight/3:i+(1.5*this.fontSize*e+this.fontSize/2)+this.titleHeight},draw:function(){if(this.custom)this.custom(this);else{B(this.ctx,this.x,this.y-this.height/2,this.width,this.height,this.cornerRadius);var t=this.ctx;t.fillStyle=this.fillColor,t.fill(),t.closePath(),t.textAlign="left",t.textBaseline="middle",t.fillStyle=this.titleTextColor,t.font=this.titleFont,t.fillText(this.title,this.x+this.xPadding,this.getLineHeight(0)),t.font=this.font,s.each(this.labels,function(i,e){t.fillStyle=this.textColor,t.fillText(i,this.x+this.xPadding+this.fontSize+3,this.getLineHeight(e+1)),t.fillStyle=this.legendColorBackground,t.fillRect(this.x+this.xPadding,this.getLineHeight(e+1)-this.fontSize/2,this.fontSize,this.fontSize),t.fillStyle=this.legendColors[e].fill,t.fillRect(this.x+this.xPadding,this.getLineHeight(e+1)-this.fontSize/2,this.fontSize,this.fontSize)},this)}}}),e.Scale=e.Element.extend({initialize:function(){this.fit()},buildYLabels:function(){this.yLabels=[];for(var t=v(this.stepValue),i=0;i<=this.steps;i++)this.yLabels.push(y(this.templateString,{value:(this.min+i*this.stepValue).toFixed(t)}));this.yLabelWidth=this.display&&this.showLabels?z(this.ctx,this.font,this.yLabels)+10:0},addXLabel:function(t){this.xLabels.push(t),this.valuesCount++,this.fit()},removeXLabel:function(){this.xLabels.shift(),this.valuesCount--,this.fit()},fit:function(){this.startPoint=this.display?this.fontSize:0,this.endPoint=this.display?this.height-1.5*this.fontSize-5:this.height,this.startPoint+=this.padding,this.endPoint-=this.padding;var t,i=this.endPoint,e=this.endPoint-this.startPoint;for(this.calculateYRange(e),this.buildYLabels(),this.calculateXLabelRotation();e>this.endPoint-this.startPoint;)e=this.endPoint-this.startPoint,t=this.yLabelWidth,this.calculateYRange(e),this.buildYLabels(),t<this.yLabelWidth&&(this.endPoint=i,this.calculateXLabelRotation())},calculateXLabelRotation:function(){this.ctx.font=this.font;var t,i,e=this.ctx.measureText(this.xLabels[0]).width,s=this.ctx.measureText(this.xLabels[this.xLabels.length-1]).width;if(this.xScalePaddingRight=s/2+3,this.xScalePaddingLeft=e/2>this.yLabelWidth?e/2:this.yLabelWidth,this.xLabelRotation=0,this.display){var n,o=z(this.ctx,this.font,this.xLabels);this.xLabelWidth=o;for(var a=Math.floor(this.calculateX(1)-this.calculateX(0))-6;this.xLabelWidth>a&&0===this.xLabelRotation||this.xLabelWidth>a&&this.xLabelRotation<=90&&this.xLabelRotation>0;)n=Math.cos(S(this.xLabelRotation)),t=n*e,i=n*s,t+this.fontSize/2>this.yLabelWidth&&(this.xScalePaddingLeft=t+this.fontSize/2),this.xScalePaddingRight=this.fontSize/2,this.xLabelRotation++,this.xLabelWidth=n*o;this.xLabelRotation>0&&(this.endPoint-=Math.sin(S(this.xLabelRotation))*o+3)}else this.xLabelWidth=0,this.xScalePaddingRight=this.padding,this.xScalePaddingLeft=this.padding},calculateYRange:c,drawingArea:function(){return this.startPoint-this.endPoint},calculateY:function(t){var i=this.drawingArea()/(this.min-this.max);return this.endPoint-i*(t-this.min)},calculateX:function(t){var i=(this.xLabelRotation>0,this.width-(this.xScalePaddingLeft+this.xScalePaddingRight)),e=i/Math.max(this.valuesCount-(this.offsetGridLines?0:1),1),s=e*t+this.xScalePaddingLeft;return this.offsetGridLines&&(s+=e/2),Math.round(s)},update:function(t){s.extend(this,t),this.fit()},draw:function(){var t=this.ctx,i=(this.endPoint-this.startPoint)/this.steps,e=Math.round(this.xScalePaddingLeft);this.display&&(t.fillStyle=this.textColor,t.font=this.font,n(this.yLabels,function(n,o){var a=this.endPoint-i*o,h=Math.round(a),l=this.showHorizontalLines;t.textAlign="right",t.textBaseline="middle",this.showLabels&&t.fillText(n,e-10,a),0!==o||l||(l=!0),l&&t.beginPath(),o>0?(t.lineWidth=this.gridLineWidth,t.strokeStyle=this.gridLineColor):(t.lineWidth=this.lineWidth,t.strokeStyle=this.lineColor),h+=s.aliasPixel(t.lineWidth),l&&(t.moveTo(e,h),t.lineTo(this.width,h),t.stroke(),t.closePath()),t.lineWidth=this.lineWidth,t.strokeStyle=this.lineColor,t.beginPath(),t.moveTo(e-5,h),t.lineTo(e,h),t.stroke(),t.closePath()},this),n(this.xLabels,function(i,e){var s=this.calculateX(e)+C(this.lineWidth),n=this.calculateX(e-(this.offsetGridLines?.5:0))+C(this.lineWidth),o=this.xLabelRotation>0,a=this.showVerticalLines;0!==e||a||(a=!0),a&&t.beginPath(),e>0?(t.lineWidth=this.gridLineWidth,t.strokeStyle=this.gridLineColor):(t.lineWidth=this.lineWidth,t.strokeStyle=this.lineColor),a&&(t.moveTo(n,this.endPoint),t.lineTo(n,this.startPoint-3),t.stroke(),t.closePath()),t.lineWidth=this.lineWidth,t.strokeStyle=this.lineColor,t.beginPath(),t.moveTo(n,this.endPoint),t.lineTo(n,this.endPoint+5),t.stroke(),t.closePath(),t.save(),t.translate(s,o?this.endPoint+12:this.endPoint+8),t.rotate(-1*S(this.xLabelRotation)),t.font=this.font,t.textAlign=o?"right":"center",t.textBaseline=o?"middle":"top",t.fillText(i,0,0),t.restore()},this))}}),e.RadialScale=e.Element.extend({initialize:function(){this.size=m([this.height,this.width]),this.drawingArea=this.display?this.size/2-(this.fontSize/2+this.backdropPaddingY):this.size/2},calculateCenterOffset:function(t){var i=this.drawingArea/(this.max-this.min);return(t-this.min)*i},update:function(){this.lineArc?this.drawingArea=this.display?this.size/2-(this.fontSize/2+this.backdropPaddingY):this.size/2:this.setScaleSize(),this.buildYLabels()},buildYLabels:function(){this.yLabels=[];for(var t=v(this.stepValue),i=0;i<=this.steps;i++)this.yLabels.push(y(this.templateString,{value:(this.min+i*this.stepValue).toFixed(t)}))},getCircumference:function(){return 2*Math.PI/this.valuesCount},setScaleSize:function(){var t,i,e,s,n,o,a,h,l,r,c,u,d=m([this.height/2-this.pointLabelFontSize-5,this.width/2]),p=this.width,g=0;for(this.ctx.font=W(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily),i=0;i<this.valuesCount;i++)t=this.getPointPosition(i,d),e=this.ctx.measureText(y(this.templateString,{value:this.labels[i]})).width+5,0===i||i===this.valuesCount/2?(s=e/2,t.x+s>p&&(p=t.x+s,n=i),t.x-s<g&&(g=t.x-s,a=i)):i<this.valuesCount/2?t.x+e>p&&(p=t.x+e,n=i):i>this.valuesCount/2&&t.x-e<g&&(g=t.x-e,a=i);l=g,r=Math.ceil(p-this.width),o=this.getIndexAngle(n),h=this.getIndexAngle(a),c=r/Math.sin(o+Math.PI/2),u=l/Math.sin(h+Math.PI/2),c=f(c)?c:0,u=f(u)?u:0,this.drawingArea=d-(u+c)/2,this.setCenterPoint(u,c)},setCenterPoint:function(t,i){var e=this.width-i-this.drawingArea,s=t+this.drawingArea;this.xCenter=(s+e)/2,this.yCenter=this.height/2},getIndexAngle:function(t){var i=2*Math.PI/this.valuesCount;return t*i-Math.PI/2},getPointPosition:function(t,i){var e=this.getIndexAngle(t);return{x:Math.cos(e)*i+this.xCenter,y:Math.sin(e)*i+this.yCenter}},draw:function(){if(this.display){var t=this.ctx;if(n(this.yLabels,function(i,e){if(e>0){var s,n=e*(this.drawingArea/this.steps),o=this.yCenter-n;if(this.lineWidth>0)if(t.strokeStyle=this.lineColor,t.lineWidth=this.lineWidth,this.lineArc)t.beginPath(),t.arc(this.xCenter,this.yCenter,n,0,2*Math.PI),t.closePath(),t.stroke();else{t.beginPath();for(var a=0;a<this.valuesCount;a++)s=this.getPointPosition(a,this.calculateCenterOffset(this.min+e*this.stepValue)),0===a?t.moveTo(s.x,s.y):t.lineTo(s.x,s.y);t.closePath(),t.stroke()}if(this.showLabels){if(t.font=W(this.fontSize,this.fontStyle,this.fontFamily),this.showLabelBackdrop){var h=t.measureText(i).width;t.fillStyle=this.backdropColor,t.fillRect(this.xCenter-h/2-this.backdropPaddingX,o-this.fontSize/2-this.backdropPaddingY,h+2*this.backdropPaddingX,this.fontSize+2*this.backdropPaddingY)}t.textAlign="center",t.textBaseline="middle",t.fillStyle=this.fontColor,t.fillText(i,this.xCenter,o)}}},this),!this.lineArc){t.lineWidth=this.angleLineWidth,t.strokeStyle=this.angleLineColor;for(var i=this.valuesCount-1;i>=0;i--){var e=null,s=null;if(this.angleLineWidth>0&&i%this.angleLineInterval===0&&(e=this.calculateCenterOffset(this.max),s=this.getPointPosition(i,e),t.beginPath(),t.moveTo(this.xCenter,this.yCenter),t.lineTo(s.x,s.y),t.stroke(),t.closePath()),this.backgroundColors&&this.backgroundColors.length==this.valuesCount){null==e&&(e=this.calculateCenterOffset(this.max)),null==s&&(s=this.getPointPosition(i,e));var o=this.getPointPosition(0===i?this.valuesCount-1:i-1,e),a=this.getPointPosition(i===this.valuesCount-1?0:i+1,e),h={x:(o.x+s.x)/2,y:(o.y+s.y)/2},l={x:(s.x+a.x)/2,y:(s.y+a.y)/2};t.beginPath(),t.moveTo(this.xCenter,this.yCenter),t.lineTo(h.x,h.y),t.lineTo(s.x,s.y),t.lineTo(l.x,l.y),t.fillStyle=this.backgroundColors[i],t.fill(),t.closePath()}var r=this.getPointPosition(i,this.calculateCenterOffset(this.max)+5);t.font=W(this.pointLabelFontSize,this.pointLabelFontStyle,this.pointLabelFontFamily),t.fillStyle=this.pointLabelFontColor;var c=this.labels.length,u=this.labels.length/2,d=u/2,p=d>i||i>c-d,f=i===d||i===c-d;0===i?t.textAlign="center":i===u?t.textAlign="center":u>i?t.textAlign="left":t.textAlign="right",f?t.textBaseline="middle":p?t.textBaseline="bottom":t.textBaseline="top",t.fillText(this.labels[i],r.x,r.y)}}}}}),e.animationService={frameDuration:17,animations:[],dropFrames:0,addAnimation:function(t,i){for(var e=0;e<this.animations.length;++e)if(this.animations[e].chartInstance===t)return void(this.animations[e].animationObject=i);this.animations.push({chartInstance:t,animationObject:i}),1==this.animations.length&&s.requestAnimFrame.call(window,this.digestWrapper)},cancelAnimation:function(t){var i=s.findNextWhere(this.animations,function(i){return i.chartInstance===t});i&&this.animations.splice(i,1)},digestWrapper:function(){e.animationService.startDigest.call(e.animationService)},startDigest:function(){var t=Date.now(),i=0;this.dropFrames>1&&(i=Math.floor(this.dropFrames),this.dropFrames-=i);for(var e=0;e<this.animations.length;e++)null===this.animations[e].animationObject.currentStep&&(this.animations[e].animationObject.currentStep=0),this.animations[e].animationObject.currentStep+=1+i,this.animations[e].animationObject.currentStep>this.animations[e].animationObject.numSteps&&(this.animations[e].animationObject.currentStep=this.animations[e].animationObject.numSteps),this.animations[e].animationObject.render(this.animations[e].chartInstance,this.animations[e].animationObject),this.animations[e].animationObject.currentStep==this.animations[e].animationObject.numSteps&&(this.animations[e].animationObject.onAnimationComplete.call(this.animations[e].chartInstance),this.animations.splice(e,1),e--);var n=Date.now(),o=n-t-this.frameDuration,a=o/this.frameDuration;a>1&&(this.dropFrames+=a),this.animations.length>0&&s.requestAnimFrame.call(window,this.digestWrapper)}},s.addEvent(window,"resize",function(){var t;return function(){clearTimeout(t),t=setTimeout(function(){n(e.instances,function(t){t.options.responsive&&t.resize(t.render,!0)})},50)}}()),p?define("Chart",[],function(){return e}):"object"==typeof module&&module.exports&&(module.exports=e),t.Chart=e,e.noConflict=function(){return t.Chart=i,e}}).call(this),function(){"use strict";var t=this,i=t.Chart,e=i.helpers,s={scaleBeginAtZero:!0,scaleShowGridLines:!0,scaleGridLineColor:"rgba(0,0,0,.05)",scaleGridLineWidth:1,scaleShowHorizontalLines:!0,scaleShowVerticalLines:!0,barShowStroke:!0,barStrokeWidth:2,barValueSpacing:5,barDatasetSpacing:1,legendTemplate:'<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span class="<%=name.toLowerCase()%>-legend-icon" style="background-color:<%=datasets[i].fillColor%>"></span><span class="<%=name.toLowerCase()%>-legend-text"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>'};i.Type.extend({name:"Bar",defaults:s,initialize:function(t){var s=this.options;this.ScaleClass=i.Scale.extend({offsetGridLines:!0,calculateBarX:function(t,i,e){var n=this.calculateBaseWidth(),o=this.calculateX(e)-n/2,a=this.calculateBarWidth(t);return o+a*i+i*s.barDatasetSpacing+a/2},calculateBaseWidth:function(){return this.calculateX(1)-this.calculateX(0)-2*s.barValueSpacing;
+},calculateBarWidth:function(t){var i=this.calculateBaseWidth()-(t-1)*s.barDatasetSpacing;return i/t}}),this.datasets=[],this.options.showTooltips&&e.bindEvents(this,this.options.tooltipEvents,function(t){var i="mouseout"!==t.type?this.getBarsAtEvent(t):[];this.eachBars(function(t){t.restore(["fillColor","strokeColor"])}),e.each(i,function(t){t&&(t.fillColor=t.highlightFill,t.strokeColor=t.highlightStroke)}),this.showTooltip(i)}),this.BarClass=i.Rectangle.extend({strokeWidth:this.options.barStrokeWidth,showStroke:this.options.barShowStroke,ctx:this.chart.ctx}),e.each(t.datasets,function(i,s){var n={label:i.label||null,fillColor:i.fillColor,strokeColor:i.strokeColor,bars:[]};this.datasets.push(n),e.each(i.data,function(e,s){n.bars.push(new this.BarClass({value:e,label:t.labels[s],datasetLabel:i.label,strokeColor:"object"==typeof i.strokeColor?i.strokeColor[s]:i.strokeColor,fillColor:"object"==typeof i.fillColor?i.fillColor[s]:i.fillColor,highlightFill:i.highlightFill?"object"==typeof i.highlightFill?i.highlightFill[s]:i.highlightFill:"object"==typeof i.fillColor?i.fillColor[s]:i.fillColor,highlightStroke:i.highlightStroke?"object"==typeof i.highlightStroke?i.highlightStroke[s]:i.highlightStroke:"object"==typeof i.strokeColor?i.strokeColor[s]:i.strokeColor}))},this)},this),this.buildScale(t.labels),this.BarClass.prototype.base=this.scale.endPoint,this.eachBars(function(t,i,s){e.extend(t,{width:this.scale.calculateBarWidth(this.datasets.length),x:this.scale.calculateBarX(this.datasets.length,s,i),y:this.scale.endPoint}),t.save()},this),this.render()},update:function(){this.scale.update(),e.each(this.activeElements,function(t){t.restore(["fillColor","strokeColor"])}),this.eachBars(function(t){t.save()}),this.render()},eachBars:function(t){e.each(this.datasets,function(i,s){e.each(i.bars,t,this,s)},this)},getBarsAtEvent:function(t){for(var i,s=[],n=e.getRelativePosition(t),o=function(t){s.push(t.bars[i])},a=0;a<this.datasets.length;a++)for(i=0;i<this.datasets[a].bars.length;i++)if(this.datasets[a].bars[i].inRange(n.x,n.y))return e.each(this.datasets,o),s;return s},buildScale:function(t){var i=this,s=function(){var t=[];return i.eachBars(function(i){t.push(i.value)}),t},n={templateString:this.options.scaleLabel,height:this.chart.height,width:this.chart.width,ctx:this.chart.ctx,textColor:this.options.scaleFontColor,fontSize:this.options.scaleFontSize,fontStyle:this.options.scaleFontStyle,fontFamily:this.options.scaleFontFamily,valuesCount:t.length,beginAtZero:this.options.scaleBeginAtZero,integersOnly:this.options.scaleIntegersOnly,calculateYRange:function(t){var i=e.calculateScaleRange(s(),t,this.fontSize,this.beginAtZero,this.integersOnly);e.extend(this,i)},xLabels:t,font:e.fontString(this.options.scaleFontSize,this.options.scaleFontStyle,this.options.scaleFontFamily),lineWidth:this.options.scaleLineWidth,lineColor:this.options.scaleLineColor,showHorizontalLines:this.options.scaleShowHorizontalLines,showVerticalLines:this.options.scaleShowVerticalLines,gridLineWidth:this.options.scaleShowGridLines?this.options.scaleGridLineWidth:0,gridLineColor:this.options.scaleShowGridLines?this.options.scaleGridLineColor:"rgba(0,0,0,0)",padding:this.options.showScale?0:this.options.barShowStroke?this.options.barStrokeWidth:0,showLabels:this.options.scaleShowLabels,display:this.options.showScale};this.options.scaleOverride&&e.extend(n,{calculateYRange:e.noop,steps:this.options.scaleSteps,stepValue:this.options.scaleStepWidth,min:this.options.scaleStartValue,max:this.options.scaleStartValue+this.options.scaleSteps*this.options.scaleStepWidth}),this.scale=new this.ScaleClass(n)},addData:function(t,i){e.each(t,function(t,e){this.datasets[e].bars.push(new this.BarClass({value:t,label:i,datasetLabel:this.datasets[e].label,x:this.scale.calculateBarX(this.datasets.length,e,this.scale.valuesCount+1),y:this.scale.endPoint,width:this.scale.calculateBarWidth(this.datasets.length),base:this.scale.endPoint,strokeColor:this.datasets[e].strokeColor,fillColor:this.datasets[e].fillColor}))},this),this.scale.addXLabel(i),this.update()},removeData:function(){this.scale.removeXLabel(),e.each(this.datasets,function(t){t.bars.shift()},this),this.update()},reflow:function(){e.extend(this.BarClass.prototype,{y:this.scale.endPoint,base:this.scale.endPoint});var t=e.extend({height:this.chart.height,width:this.chart.width});this.scale.update(t)},draw:function(t){var i=t||1;this.clear();this.chart.ctx;this.scale.draw(i),e.each(this.datasets,function(t,s){e.each(t.bars,function(t,e){t.hasValue()&&(t.base=this.scale.endPoint,t.transition({x:this.scale.calculateBarX(this.datasets.length,s,e),y:this.scale.calculateY(t.value),width:this.scale.calculateBarWidth(this.datasets.length)},i).draw())},this)},this)}})}.call(this),function(){"use strict";var t=this,i=t.Chart,e=i.helpers,s={segmentShowStroke:!0,segmentStrokeColor:"#fff",segmentStrokeWidth:2,percentageInnerCutout:50,animationSteps:100,animationEasing:"easeOutBounce",animateRotate:!0,animateScale:!1,legendTemplate:'<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span class="<%=name.toLowerCase()%>-legend-icon" style="background-color:<%=segments[i].fillColor%>"></span><span class="<%=name.toLowerCase()%>-legend-text"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>'};i.Type.extend({name:"Doughnut",defaults:s,initialize:function(t){this.segments=[],this.outerRadius=(e.min([this.chart.width,this.chart.height])-this.options.segmentStrokeWidth/2)/2,this.SegmentArc=i.Arc.extend({ctx:this.chart.ctx,x:this.chart.width/2,y:this.chart.height/2}),this.options.showTooltips&&e.bindEvents(this,this.options.tooltipEvents,function(t){var i="mouseout"!==t.type?this.getSegmentsAtEvent(t):[];e.each(this.segments,function(t){t.restore(["fillColor"])}),e.each(i,function(t){t.fillColor=t.highlightColor}),this.showTooltip(i)}),this.calculateTotal(t),e.each(t,function(i,e){i.color||(i.color="hsl("+360*e/t.length+", 100%, 50%)"),this.addData(i,e,!0)},this),this.render()},getSegmentsAtEvent:function(t){var i=[],s=e.getRelativePosition(t);return e.each(this.segments,function(t){t.inRange(s.x,s.y)&&i.push(t)},this),i},addData:function(t,e,s){var n=void 0!==e?e:this.segments.length;"undefined"==typeof t.color&&(t.color=i.defaults.global.segmentColorDefault[n%i.defaults.global.segmentColorDefault.length],t.highlight=i.defaults.global.segmentHighlightColorDefaults[n%i.defaults.global.segmentHighlightColorDefaults.length]),this.segments.splice(n,0,new this.SegmentArc({value:t.value,outerRadius:this.options.animateScale?0:this.outerRadius,innerRadius:this.options.animateScale?0:this.outerRadius/100*this.options.percentageInnerCutout,fillColor:t.color,highlightColor:t.highlight||t.color,showStroke:this.options.segmentShowStroke,strokeWidth:this.options.segmentStrokeWidth,strokeColor:this.options.segmentStrokeColor,startAngle:1.5*Math.PI,circumference:this.options.animateRotate?0:this.calculateCircumference(t.value),label:t.label})),s||(this.reflow(),this.update())},calculateCircumference:function(t){return this.total>0?2*Math.PI*(t/this.total):0},calculateTotal:function(t){this.total=0,e.each(t,function(t){this.total+=Math.abs(t.value)},this)},update:function(){this.calculateTotal(this.segments),e.each(this.activeElements,function(t){t.restore(["fillColor"])}),e.each(this.segments,function(t){t.save()}),this.render()},removeData:function(t){var i=e.isNumber(t)?t:this.segments.length-1;this.segments.splice(i,1),this.reflow(),this.update()},reflow:function(){e.extend(this.SegmentArc.prototype,{x:this.chart.width/2,y:this.chart.height/2}),this.outerRadius=(e.min([this.chart.width,this.chart.height])-this.options.segmentStrokeWidth/2)/2,e.each(this.segments,function(t){t.update({outerRadius:this.outerRadius,innerRadius:this.outerRadius/100*this.options.percentageInnerCutout})},this)},draw:function(t){var i=t?t:1;this.clear(),e.each(this.segments,function(t,e){t.transition({circumference:this.calculateCircumference(t.value),outerRadius:this.outerRadius,innerRadius:this.outerRadius/100*this.options.percentageInnerCutout},i),t.endAngle=t.startAngle+t.circumference,t.draw(),0===e&&(t.startAngle=1.5*Math.PI),e<this.segments.length-1&&(this.segments[e+1].startAngle=t.endAngle)},this)}}),i.types.Doughnut.extend({name:"Pie",defaults:e.merge(s,{percentageInnerCutout:0})})}.call(this),function(){"use strict";var t=this,i=t.Chart,e=i.helpers,s={scaleShowGridLines:!0,scaleGridLineColor:"rgba(0,0,0,.05)",scaleGridLineWidth:1,scaleShowHorizontalLines:!0,scaleShowVerticalLines:!0,bezierCurve:!0,bezierCurveTension:.4,pointDot:!0,pointDotRadius:4,pointDotStrokeWidth:1,pointHitDetectionRadius:20,datasetStroke:!0,datasetStrokeWidth:2,datasetFill:!0,legendTemplate:'<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span class="<%=name.toLowerCase()%>-legend-icon" style="background-color:<%=datasets[i].strokeColor%>"></span><span class="<%=name.toLowerCase()%>-legend-text"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>',offsetGridLines:!1};i.Type.extend({name:"Line",defaults:s,initialize:function(t){this.PointClass=i.Point.extend({offsetGridLines:this.options.offsetGridLines,strokeWidth:this.options.pointDotStrokeWidth,radius:this.options.pointDotRadius,display:this.options.pointDot,hitDetectionRadius:this.options.pointHitDetectionRadius,ctx:this.chart.ctx,inRange:function(t){return Math.pow(t-this.x,2)<Math.pow(this.radius+this.hitDetectionRadius,2)}}),this.datasets=[],this.options.showTooltips&&e.bindEvents(this,this.options.tooltipEvents,function(t){var i="mouseout"!==t.type?this.getPointsAtEvent(t):[];this.eachPoints(function(t){t.restore(["fillColor","strokeColor"])}),e.each(i,function(t){t.fillColor=t.highlightFill,t.strokeColor=t.highlightStroke}),this.showTooltip(i)}),e.each(t.datasets,function(i){var s={label:i.label||null,fillColor:i.fillColor,strokeColor:i.strokeColor,pointColor:i.pointColor,pointStrokeColor:i.pointStrokeColor,points:[]};this.datasets.push(s),e.each(i.data,function(e,n){s.points.push(new this.PointClass({value:e,label:t.labels[n],datasetLabel:i.label,strokeColor:i.pointStrokeColor,fillColor:i.pointColor,highlightFill:i.pointHighlightFill||i.pointColor,highlightStroke:i.pointHighlightStroke||i.pointStrokeColor}))},this),this.buildScale(t.labels),this.eachPoints(function(t,i){e.extend(t,{x:this.scale.calculateX(i),y:this.scale.endPoint}),t.save()},this)},this),this.render()},update:function(){this.scale.update(),e.each(this.activeElements,function(t){t.restore(["fillColor","strokeColor"])}),this.eachPoints(function(t){t.save()}),this.render()},eachPoints:function(t){e.each(this.datasets,function(i){e.each(i.points,t,this)},this)},getPointsAtEvent:function(t){var i=[],s=e.getRelativePosition(t);return e.each(this.datasets,function(t){e.each(t.points,function(t){t.inRange(s.x,s.y)&&i.push(t)})},this),i},buildScale:function(t){var s=this,n=function(){var t=[];return s.eachPoints(function(i){t.push(i.value)}),t},o={templateString:this.options.scaleLabel,height:this.chart.height,width:this.chart.width,ctx:this.chart.ctx,textColor:this.options.scaleFontColor,offsetGridLines:this.options.offsetGridLines,fontSize:this.options.scaleFontSize,fontStyle:this.options.scaleFontStyle,fontFamily:this.options.scaleFontFamily,valuesCount:t.length,beginAtZero:this.options.scaleBeginAtZero,integersOnly:this.options.scaleIntegersOnly,calculateYRange:function(t){var i=e.calculateScaleRange(n(),t,this.fontSize,this.beginAtZero,this.integersOnly);e.extend(this,i)},xLabels:t,font:e.fontString(this.options.scaleFontSize,this.options.scaleFontStyle,this.options.scaleFontFamily),lineWidth:this.options.scaleLineWidth,lineColor:this.options.scaleLineColor,showHorizontalLines:this.options.scaleShowHorizontalLines,showVerticalLines:this.options.scaleShowVerticalLines,gridLineWidth:this.options.scaleShowGridLines?this.options.scaleGridLineWidth:0,gridLineColor:this.options.scaleShowGridLines?this.options.scaleGridLineColor:"rgba(0,0,0,0)",padding:this.options.showScale?0:this.options.pointDotRadius+this.options.pointDotStrokeWidth,showLabels:this.options.scaleShowLabels,display:this.options.showScale};this.options.scaleOverride&&e.extend(o,{calculateYRange:e.noop,steps:this.options.scaleSteps,stepValue:this.options.scaleStepWidth,min:this.options.scaleStartValue,max:this.options.scaleStartValue+this.options.scaleSteps*this.options.scaleStepWidth}),this.scale=new i.Scale(o)},addData:function(t,i){e.each(t,function(t,e){this.datasets[e].points.push(new this.PointClass({value:t,label:i,datasetLabel:this.datasets[e].label,x:this.scale.calculateX(this.scale.valuesCount+1),y:this.scale.endPoint,strokeColor:this.datasets[e].pointStrokeColor,fillColor:this.datasets[e].pointColor}))},this),this.scale.addXLabel(i),this.update()},removeData:function(){this.scale.removeXLabel(),e.each(this.datasets,function(t){t.points.shift()},this),this.update()},reflow:function(){var t=e.extend({height:this.chart.height,width:this.chart.width});this.scale.update(t)},draw:function(t){var i=t||1;this.clear();var s=this.chart.ctx,n=function(t){return null!==t.value},o=function(t,i,s){return e.findNextWhere(i,n,s)||t},a=function(t,i,s){return e.findPreviousWhere(i,n,s)||t};this.scale&&(this.scale.draw(i),e.each(this.datasets,function(t){var h=e.where(t.points,n);e.each(t.points,function(t,e){t.hasValue()&&t.transition({y:this.scale.calculateY(t.value),x:this.scale.calculateX(e)},i)},this),this.options.bezierCurve&&e.each(h,function(t,i){var s=i>0&&i<h.length-1?this.options.bezierCurveTension:0;t.controlPoints=e.splineCurve(a(t,h,i),t,o(t,h,i),s),t.controlPoints.outer.y>this.scale.endPoint?t.controlPoints.outer.y=this.scale.endPoint:t.controlPoints.outer.y<this.scale.startPoint&&(t.controlPoints.outer.y=this.scale.startPoint),t.controlPoints.inner.y>this.scale.endPoint?t.controlPoints.inner.y=this.scale.endPoint:t.controlPoints.inner.y<this.scale.startPoint&&(t.controlPoints.inner.y=this.scale.startPoint)},this),s.lineWidth=this.options.datasetStrokeWidth,s.strokeStyle=t.strokeColor,s.beginPath(),e.each(h,function(t,i){if(0===i)s.moveTo(t.x,t.y);else if(this.options.bezierCurve){var e=a(t,h,i);s.bezierCurveTo(e.controlPoints.outer.x,e.controlPoints.outer.y,t.controlPoints.inner.x,t.controlPoints.inner.y,t.x,t.y)}else s.lineTo(t.x,t.y)},this),this.options.datasetStroke&&s.stroke(),this.options.datasetFill&&h.length>0&&(s.lineTo(h[h.length-1].x,this.scale.endPoint),s.lineTo(h[0].x,this.scale.endPoint),s.fillStyle=t.fillColor,s.closePath(),s.fill()),e.each(h,function(t){t.draw()})},this))}})}.call(this),function(){"use strict";var t=this,i=t.Chart,e=i.helpers,s={scaleShowLabelBackdrop:!0,scaleBackdropColor:"rgba(255,255,255,0.75)",scaleBeginAtZero:!0,scaleBackdropPaddingY:2,scaleBackdropPaddingX:2,scaleShowLine:!0,segmentShowStroke:!0,segmentStrokeColor:"#fff",segmentStrokeWidth:2,animationSteps:100,animationEasing:"easeOutBounce",animateRotate:!0,animateScale:!1,legendTemplate:'<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span class="<%=name.toLowerCase()%>-legend-icon" style="background-color:<%=segments[i].fillColor%>"></span><span class="<%=name.toLowerCase()%>-legend-text"><%if(segments[i].label){%><%=segments[i].label%><%}%></span></li><%}%></ul>'};i.Type.extend({name:"PolarArea",defaults:s,initialize:function(t){this.segments=[],this.SegmentArc=i.Arc.extend({showStroke:this.options.segmentShowStroke,strokeWidth:this.options.segmentStrokeWidth,strokeColor:this.options.segmentStrokeColor,ctx:this.chart.ctx,innerRadius:0,x:this.chart.width/2,y:this.chart.height/2}),this.scale=new i.RadialScale({display:this.options.showScale,fontStyle:this.options.scaleFontStyle,fontSize:this.options.scaleFontSize,fontFamily:this.options.scaleFontFamily,fontColor:this.options.scaleFontColor,showLabels:this.options.scaleShowLabels,showLabelBackdrop:this.options.scaleShowLabelBackdrop,backdropColor:this.options.scaleBackdropColor,backdropPaddingY:this.options.scaleBackdropPaddingY,backdropPaddingX:this.options.scaleBackdropPaddingX,lineWidth:this.options.scaleShowLine?this.options.scaleLineWidth:0,lineColor:this.options.scaleLineColor,lineArc:!0,width:this.chart.width,height:this.chart.height,xCenter:this.chart.width/2,yCenter:this.chart.height/2,ctx:this.chart.ctx,templateString:this.options.scaleLabel,valuesCount:t.length}),this.updateScaleRange(t),this.scale.update(),e.each(t,function(t,i){this.addData(t,i,!0)},this),this.options.showTooltips&&e.bindEvents(this,this.options.tooltipEvents,function(t){var i="mouseout"!==t.type?this.getSegmentsAtEvent(t):[];e.each(this.segments,function(t){t.restore(["fillColor"])}),e.each(i,function(t){t.fillColor=t.highlightColor}),this.showTooltip(i)}),this.render()},getSegmentsAtEvent:function(t){var i=[],s=e.getRelativePosition(t);return e.each(this.segments,function(t){t.inRange(s.x,s.y)&&i.push(t)},this),i},addData:function(t,i,e){var s=i||this.segments.length;this.segments.splice(s,0,new this.SegmentArc({fillColor:t.color,highlightColor:t.highlight||t.color,label:t.label,value:t.value,outerRadius:this.options.animateScale?0:this.scale.calculateCenterOffset(t.value),circumference:this.options.animateRotate?0:this.scale.getCircumference(),startAngle:1.5*Math.PI})),e||(this.reflow(),this.update())},removeData:function(t){var i=e.isNumber(t)?t:this.segments.length-1;this.segments.splice(i,1),this.reflow(),this.update()},calculateTotal:function(t){this.total=0,e.each(t,function(t){this.total+=t.value},this),this.scale.valuesCount=this.segments.length},updateScaleRange:function(t){var i=[];e.each(t,function(t){i.push(t.value)});var s=this.options.scaleOverride?{steps:this.options.scaleSteps,stepValue:this.options.scaleStepWidth,min:this.options.scaleStartValue,max:this.options.scaleStartValue+this.options.scaleSteps*this.options.scaleStepWidth}:e.calculateScaleRange(i,e.min([this.chart.width,this.chart.height])/2,this.options.scaleFontSize,this.options.scaleBeginAtZero,this.options.scaleIntegersOnly);e.extend(this.scale,s,{size:e.min([this.chart.width,this.chart.height]),xCenter:this.chart.width/2,yCenter:this.chart.height/2})},update:function(){this.calculateTotal(this.segments),e.each(this.segments,function(t){t.save()}),this.reflow(),this.render()},reflow:function(){e.extend(this.SegmentArc.prototype,{x:this.chart.width/2,y:this.chart.height/2}),this.updateScaleRange(this.segments),this.scale.update(),e.extend(this.scale,{xCenter:this.chart.width/2,yCenter:this.chart.height/2}),e.each(this.segments,function(t){t.update({outerRadius:this.scale.calculateCenterOffset(t.value)})},this)},draw:function(t){var i=t||1;this.clear(),e.each(this.segments,function(t,e){t.transition({circumference:this.scale.getCircumference(),outerRadius:this.scale.calculateCenterOffset(t.value)},i),t.endAngle=t.startAngle+t.circumference,0===e&&(t.startAngle=1.5*Math.PI),e<this.segments.length-1&&(this.segments[e+1].startAngle=t.endAngle),t.draw()},this),this.scale.draw()}})}.call(this),function(){"use strict";var t=this,i=t.Chart,e=i.helpers;i.Type.extend({name:"Radar",defaults:{scaleShowLine:!0,angleShowLineOut:!0,scaleShowLabels:!1,scaleBeginAtZero:!0,angleLineColor:"rgba(0,0,0,.1)",angleLineWidth:1,angleLineInterval:1,pointLabelFontFamily:"'Arial'",pointLabelFontStyle:"normal",pointLabelFontSize:10,pointLabelFontColor:"#666",pointDot:!0,pointDotRadius:3,pointDotStrokeWidth:1,pointHitDetectionRadius:20,datasetStroke:!0,datasetStrokeWidth:2,datasetFill:!0,legendTemplate:'<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span class="<%=name.toLowerCase()%>-legend-icon" style="background-color:<%=datasets[i].strokeColor%>"></span><span class="<%=name.toLowerCase()%>-legend-text"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span></li><%}%></ul>'},initialize:function(t){this.PointClass=i.Point.extend({strokeWidth:this.options.pointDotStrokeWidth,radius:this.options.pointDotRadius,display:this.options.pointDot,hitDetectionRadius:this.options.pointHitDetectionRadius,ctx:this.chart.ctx}),this.datasets=[],this.buildScale(t),this.options.showTooltips&&e.bindEvents(this,this.options.tooltipEvents,function(t){var i="mouseout"!==t.type?this.getPointsAtEvent(t):[];this.eachPoints(function(t){t.restore(["fillColor","strokeColor"])}),e.each(i,function(t){t.fillColor=t.highlightFill,t.strokeColor=t.highlightStroke}),this.showTooltip(i)}),e.each(t.datasets,function(i){var s={label:i.label||null,fillColor:i.fillColor,strokeColor:i.strokeColor,pointColor:i.pointColor,pointStrokeColor:i.pointStrokeColor,points:[]};this.datasets.push(s),e.each(i.data,function(e,n){var o;this.scale.animation||(o=this.scale.getPointPosition(n,this.scale.calculateCenterOffset(e))),s.points.push(new this.PointClass({value:e,label:t.labels[n],datasetLabel:i.label,x:this.options.animation?this.scale.xCenter:o.x,y:this.options.animation?this.scale.yCenter:o.y,strokeColor:i.pointStrokeColor,fillColor:i.pointColor,highlightFill:i.pointHighlightFill||i.pointColor,highlightStroke:i.pointHighlightStroke||i.pointStrokeColor}))},this)},this),this.render()},eachPoints:function(t){e.each(this.datasets,function(i){e.each(i.points,t,this)},this)},getPointsAtEvent:function(t){var i=e.getRelativePosition(t),s=e.getAngleFromPoint({x:this.scale.xCenter,y:this.scale.yCenter},i),n=2*Math.PI/this.scale.valuesCount,o=Math.round((s.angle-1.5*Math.PI)/n),a=[];return(o>=this.scale.valuesCount||0>o)&&(o=0),s.distance<=this.scale.drawingArea&&e.each(this.datasets,function(t){a.push(t.points[o])}),a},buildScale:function(t){this.scale=new i.RadialScale({display:this.options.showScale,fontStyle:this.options.scaleFontStyle,fontSize:this.options.scaleFontSize,fontFamily:this.options.scaleFontFamily,fontColor:this.options.scaleFontColor,showLabels:this.options.scaleShowLabels,showLabelBackdrop:this.options.scaleShowLabelBackdrop,backdropColor:this.options.scaleBackdropColor,backgroundColors:this.options.scaleBackgroundColors,backdropPaddingY:this.options.scaleBackdropPaddingY,backdropPaddingX:this.options.scaleBackdropPaddingX,lineWidth:this.options.scaleShowLine?this.options.scaleLineWidth:0,lineColor:this.options.scaleLineColor,angleLineColor:this.options.angleLineColor,angleLineWidth:this.options.angleShowLineOut?this.options.angleLineWidth:0,angleLineInterval:this.options.angleLineInterval?this.options.angleLineInterval:1,pointLabelFontColor:this.options.pointLabelFontColor,pointLabelFontSize:this.options.pointLabelFontSize,pointLabelFontFamily:this.options.pointLabelFontFamily,pointLabelFontStyle:this.options.pointLabelFontStyle,height:this.chart.height,width:this.chart.width,xCenter:this.chart.width/2,yCenter:this.chart.height/2,ctx:this.chart.ctx,templateString:this.options.scaleLabel,labels:t.labels,valuesCount:t.datasets[0].data.length}),this.scale.setScaleSize(),this.updateScaleRange(t.datasets),this.scale.buildYLabels()},updateScaleRange:function(t){var i=function(){var i=[];return e.each(t,function(t){t.data?i=i.concat(t.data):e.each(t.points,function(t){i.push(t.value)})}),i}(),s=this.options.scaleOverride?{steps:this.options.scaleSteps,stepValue:this.options.scaleStepWidth,min:this.options.scaleStartValue,max:this.options.scaleStartValue+this.options.scaleSteps*this.options.scaleStepWidth}:e.calculateScaleRange(i,e.min([this.chart.width,this.chart.height])/2,this.options.scaleFontSize,this.options.scaleBeginAtZero,this.options.scaleIntegersOnly);e.extend(this.scale,s)},addData:function(t,i){this.scale.valuesCount++,e.each(t,function(t,e){var s=this.scale.getPointPosition(this.scale.valuesCount,this.scale.calculateCenterOffset(t));this.datasets[e].points.push(new this.PointClass({value:t,label:i,datasetLabel:this.datasets[e].label,x:s.x,y:s.y,strokeColor:this.datasets[e].pointStrokeColor,fillColor:this.datasets[e].pointColor}))},this),this.scale.labels.push(i),this.reflow(),this.update()},removeData:function(){this.scale.valuesCount--,this.scale.labels.shift(),e.each(this.datasets,function(t){t.points.shift()},this),this.reflow(),this.update()},update:function(){this.eachPoints(function(t){t.save()}),this.reflow(),this.render()},reflow:function(){e.extend(this.scale,{width:this.chart.width,height:this.chart.height,size:e.min([this.chart.width,this.chart.height]),xCenter:this.chart.width/2,yCenter:this.chart.height/2}),this.updateScaleRange(this.datasets),this.scale.setScaleSize(),this.scale.buildYLabels()},draw:function(t){var i=t||1,s=this.chart.ctx;this.clear(),this.scale.draw(),e.each(this.datasets,function(t){e.each(t.points,function(t,e){t.hasValue()&&t.transition(this.scale.getPointPosition(e,this.scale.calculateCenterOffset(t.value)),i)},this),s.lineWidth=this.options.datasetStrokeWidth,s.strokeStyle=t.strokeColor,s.beginPath(),e.each(t.points,function(t,i){0===i?s.moveTo(t.x,t.y):s.lineTo(t.x,t.y)},this),s.closePath(),s.stroke(),s.fillStyle=t.fillColor,this.options.datasetFill&&s.fill(),e.each(t.points,function(t){t.hasValue()&&t.draw()})},this)}})}.call(this);
+define("chartjs", (function (global) {
+  return function () {
+    var ret, fn;
+    return ret || global.Chart;
+  };
+}(this)));
+
+// Exports
+define('aurelia-validation/aurelia-validation',["require", "exports", "./get-target-dom-element", "./property-info", "./validate-binding-behavior", "./validate-result", "./validate-trigger", "./validation-controller", "./validation-controller-factory", "./validation-errors-custom-attribute", "./validation-renderer-custom-attribute", "./validator", "./implementation/rules", "./implementation/standard-validator", "./implementation/validation-messages", "./implementation/validation-parser", "./implementation/validation-rules", "aurelia-pal", "./validator", "./implementation/standard-validator", "./implementation/validation-parser", "./implementation/validation-rules"], function (require, exports, get_target_dom_element_1, property_info_1, validate_binding_behavior_1, validate_result_1, validate_trigger_1, validation_controller_1, validation_controller_factory_1, validation_errors_custom_attribute_1, validation_renderer_custom_attribute_1, validator_1, rules_1, standard_validator_1, validation_messages_1, validation_parser_1, validation_rules_1, aurelia_pal_1, validator_2, standard_validator_2, validation_parser_2, validation_rules_2) {
+    "use strict";
+    function __export(m) {
+        for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+    }
+    Object.defineProperty(exports, "__esModule", { value: true });
+    __export(get_target_dom_element_1);
+    __export(property_info_1);
+    __export(validate_binding_behavior_1);
+    __export(validate_result_1);
+    __export(validate_trigger_1);
+    __export(validation_controller_1);
+    __export(validation_controller_factory_1);
+    __export(validation_errors_custom_attribute_1);
+    __export(validation_renderer_custom_attribute_1);
+    __export(validator_1);
+    __export(rules_1);
+    __export(standard_validator_1);
+    __export(validation_messages_1);
+    __export(validation_parser_1);
+    __export(validation_rules_1);
+    /**
+     * Aurelia Validation Configuration API
+     */
+    var AureliaValidationConfiguration = (function () {
+        function AureliaValidationConfiguration() {
+            this.validatorType = standard_validator_2.StandardValidator;
+        }
+        /**
+         * Use a custom Validator implementation.
+         */
+        AureliaValidationConfiguration.prototype.customValidator = function (type) {
+            this.validatorType = type;
+        };
+        /**
+         * Applies the configuration.
+         */
+        AureliaValidationConfiguration.prototype.apply = function (container) {
+            var validator = container.get(this.validatorType);
+            container.registerInstance(validator_2.Validator, validator);
+        };
+        return AureliaValidationConfiguration;
+    }());
+    exports.AureliaValidationConfiguration = AureliaValidationConfiguration;
+    /**
+     * Configures the plugin.
+     */
+    function configure(frameworkConfig, callback) {
+        // the fluent rule definition API needs the parser to translate messages
+        // to interpolation expressions.
+        var parser = frameworkConfig.container.get(validation_parser_2.ValidationParser);
+        validation_rules_2.ValidationRules.initialize(parser);
+        // configure...
+        var config = new AureliaValidationConfiguration();
+        if (callback instanceof Function) {
+            callback(config);
+        }
+        config.apply(frameworkConfig.container);
+        // globalize the behaviors.
+        if (frameworkConfig.globalResources) {
+            frameworkConfig.globalResources(aurelia_pal_1.PLATFORM.moduleName('./validate-binding-behavior'), aurelia_pal_1.PLATFORM.moduleName('./validation-errors-custom-attribute'), aurelia_pal_1.PLATFORM.moduleName('./validation-renderer-custom-attribute'));
+        }
+    }
+    exports.configure = configure;
+});
+;define('aurelia-validation', ['aurelia-validation/aurelia-validation'], function (main) { return main; });
+
+define('aurelia-validation/get-target-dom-element',["require", "exports", "aurelia-pal"], function (require, exports, aurelia_pal_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Gets the DOM element associated with the data-binding. Most of the time it's
+     * the binding.target but sometimes binding.target is an aurelia custom element,
+     * or custom attribute which is a javascript "class" instance, so we need to use
+     * the controller's container to retrieve the actual DOM element.
+     */
+    function getTargetDOMElement(binding, view) {
+        var target = binding.target;
+        // DOM element
+        if (target instanceof Element) {
+            return target;
+        }
+        // custom element or custom attribute
+        // tslint:disable-next-line:prefer-const
+        for (var i = 0, ii = view.controllers.length; i < ii; i++) {
+            var controller = view.controllers[i];
+            if (controller.viewModel === target) {
+                var element = controller.container.get(aurelia_pal_1.DOM.Element);
+                if (element) {
+                    return element;
+                }
+                throw new Error("Unable to locate target element for \"" + binding.sourceExpression + "\".");
+            }
+        }
+        throw new Error("Unable to locate target element for \"" + binding.sourceExpression + "\".");
+    }
+    exports.getTargetDOMElement = getTargetDOMElement;
+});
+
+define('aurelia-validation/property-info',["require", "exports", "aurelia-binding"], function (require, exports, aurelia_binding_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function getObject(expression, objectExpression, source) {
+        var value = objectExpression.evaluate(source, null);
+        if (value === null || value === undefined || value instanceof Object) {
+            return value;
+        }
+        // tslint:disable-next-line:max-line-length
+        throw new Error("The '" + objectExpression + "' part of '" + expression + "' evaluates to " + value + " instead of an object, null or undefined.");
+    }
+    /**
+     * Retrieves the object and property name for the specified expression.
+     * @param expression The expression
+     * @param source The scope
+     */
+    function getPropertyInfo(expression, source) {
+        var originalExpression = expression;
+        while (expression instanceof aurelia_binding_1.BindingBehavior || expression instanceof aurelia_binding_1.ValueConverter) {
+            expression = expression.expression;
+        }
+        var object;
+        var propertyName;
+        if (expression instanceof aurelia_binding_1.AccessScope) {
+            object = source.bindingContext;
+            propertyName = expression.name;
+        }
+        else if (expression instanceof aurelia_binding_1.AccessMember) {
+            object = getObject(originalExpression, expression.object, source);
+            propertyName = expression.name;
+        }
+        else if (expression instanceof aurelia_binding_1.AccessKeyed) {
+            object = getObject(originalExpression, expression.object, source);
+            propertyName = expression.key.evaluate(source);
+        }
+        else {
+            throw new Error("Expression '" + originalExpression + "' is not compatible with the validate binding-behavior.");
+        }
+        if (object === null || object === undefined) {
+            return null;
+        }
+        return { object: object, propertyName: propertyName };
+    }
+    exports.getPropertyInfo = getPropertyInfo;
+});
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+define('aurelia-validation/validate-binding-behavior',["require", "exports", "aurelia-task-queue", "./validate-trigger", "./validate-binding-behavior-base"], function (require, exports, aurelia_task_queue_1, validate_trigger_1, validate_binding_behavior_base_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Binding behavior. Indicates the bound property should be validated
+     * when the validate trigger specified by the associated controller's
+     * validateTrigger property occurs.
+     */
+    var ValidateBindingBehavior = (function (_super) {
+        __extends(ValidateBindingBehavior, _super);
+        function ValidateBindingBehavior() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        ValidateBindingBehavior.prototype.getValidateTrigger = function (controller) {
+            return controller.validateTrigger;
+        };
+        return ValidateBindingBehavior;
+    }(validate_binding_behavior_base_1.ValidateBindingBehaviorBase));
+    ValidateBindingBehavior.inject = [aurelia_task_queue_1.TaskQueue];
+    exports.ValidateBindingBehavior = ValidateBindingBehavior;
+    /**
+     * Binding behavior. Indicates the bound property will be validated
+     * manually, by calling controller.validate(). No automatic validation
+     * triggered by data-entry or blur will occur.
+     */
+    var ValidateManuallyBindingBehavior = (function (_super) {
+        __extends(ValidateManuallyBindingBehavior, _super);
+        function ValidateManuallyBindingBehavior() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        ValidateManuallyBindingBehavior.prototype.getValidateTrigger = function () {
+            return validate_trigger_1.validateTrigger.manual;
+        };
+        return ValidateManuallyBindingBehavior;
+    }(validate_binding_behavior_base_1.ValidateBindingBehaviorBase));
+    ValidateManuallyBindingBehavior.inject = [aurelia_task_queue_1.TaskQueue];
+    exports.ValidateManuallyBindingBehavior = ValidateManuallyBindingBehavior;
+    /**
+     * Binding behavior. Indicates the bound property should be validated
+     * when the associated element blurs.
+     */
+    var ValidateOnBlurBindingBehavior = (function (_super) {
+        __extends(ValidateOnBlurBindingBehavior, _super);
+        function ValidateOnBlurBindingBehavior() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        ValidateOnBlurBindingBehavior.prototype.getValidateTrigger = function () {
+            return validate_trigger_1.validateTrigger.blur;
+        };
+        return ValidateOnBlurBindingBehavior;
+    }(validate_binding_behavior_base_1.ValidateBindingBehaviorBase));
+    ValidateOnBlurBindingBehavior.inject = [aurelia_task_queue_1.TaskQueue];
+    exports.ValidateOnBlurBindingBehavior = ValidateOnBlurBindingBehavior;
+    /**
+     * Binding behavior. Indicates the bound property should be validated
+     * when the associated element is changed by the user, causing a change
+     * to the model.
+     */
+    var ValidateOnChangeBindingBehavior = (function (_super) {
+        __extends(ValidateOnChangeBindingBehavior, _super);
+        function ValidateOnChangeBindingBehavior() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        ValidateOnChangeBindingBehavior.prototype.getValidateTrigger = function () {
+            return validate_trigger_1.validateTrigger.change;
+        };
+        return ValidateOnChangeBindingBehavior;
+    }(validate_binding_behavior_base_1.ValidateBindingBehaviorBase));
+    ValidateOnChangeBindingBehavior.inject = [aurelia_task_queue_1.TaskQueue];
+    exports.ValidateOnChangeBindingBehavior = ValidateOnChangeBindingBehavior;
+    /**
+     * Binding behavior. Indicates the bound property should be validated
+     * when the associated element blurs or is changed by the user, causing
+     * a change to the model.
+     */
+    var ValidateOnChangeOrBlurBindingBehavior = (function (_super) {
+        __extends(ValidateOnChangeOrBlurBindingBehavior, _super);
+        function ValidateOnChangeOrBlurBindingBehavior() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        ValidateOnChangeOrBlurBindingBehavior.prototype.getValidateTrigger = function () {
+            return validate_trigger_1.validateTrigger.changeOrBlur;
+        };
+        return ValidateOnChangeOrBlurBindingBehavior;
+    }(validate_binding_behavior_base_1.ValidateBindingBehaviorBase));
+    ValidateOnChangeOrBlurBindingBehavior.inject = [aurelia_task_queue_1.TaskQueue];
+    exports.ValidateOnChangeOrBlurBindingBehavior = ValidateOnChangeOrBlurBindingBehavior;
+});
+
+define('aurelia-validation/validate-trigger',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Validation triggers.
+     */
+    var validateTrigger;
+    (function (validateTrigger) {
+        /**
+         * Manual validation.  Use the controller's `validate()` and  `reset()` methods
+         * to validate all bindings.
+         */
+        validateTrigger[validateTrigger["manual"] = 0] = "manual";
+        /**
+         * Validate the binding when the binding's target element fires a DOM "blur" event.
+         */
+        validateTrigger[validateTrigger["blur"] = 1] = "blur";
+        /**
+         * Validate the binding when it updates the model due to a change in the view.
+         */
+        validateTrigger[validateTrigger["change"] = 2] = "change";
+        /**
+         * Validate the binding when the binding's target element fires a DOM "blur" event and
+         * when it updates the model due to a change in the view.
+         */
+        validateTrigger[validateTrigger["changeOrBlur"] = 3] = "changeOrBlur";
+    })(validateTrigger = exports.validateTrigger || (exports.validateTrigger = {}));
+    ;
+});
+
+define('aurelia-validation/validate-binding-behavior-base',["require", "exports", "aurelia-dependency-injection", "./validation-controller", "./validate-trigger", "./get-target-dom-element"], function (require, exports, aurelia_dependency_injection_1, validation_controller_1, validate_trigger_1, get_target_dom_element_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Binding behavior. Indicates the bound property should be validated.
+     */
+    var ValidateBindingBehaviorBase = (function () {
+        function ValidateBindingBehaviorBase(taskQueue) {
+            this.taskQueue = taskQueue;
+        }
+        ValidateBindingBehaviorBase.prototype.bind = function (binding, source, rulesOrController, rules) {
+            var _this = this;
+            // identify the target element.
+            var target = get_target_dom_element_1.getTargetDOMElement(binding, source);
+            // locate the controller.
+            var controller;
+            if (rulesOrController instanceof validation_controller_1.ValidationController) {
+                controller = rulesOrController;
+            }
+            else {
+                controller = source.container.get(aurelia_dependency_injection_1.Optional.of(validation_controller_1.ValidationController));
+                rules = rulesOrController;
+            }
+            if (controller === null) {
+                throw new Error("A ValidationController has not been registered.");
+            }
+            controller.registerBinding(binding, target, rules);
+            binding.validationController = controller;
+            var trigger = this.getValidateTrigger(controller);
+            // tslint:disable-next-line:no-bitwise
+            if (trigger & validate_trigger_1.validateTrigger.change) {
+                binding.standardUpdateSource = binding.updateSource;
+                // tslint:disable-next-line:only-arrow-functions
+                binding.updateSource = function (value) {
+                    this.standardUpdateSource(value);
+                    this.validationController.validateBinding(this);
+                };
+            }
+            // tslint:disable-next-line:no-bitwise
+            if (trigger & validate_trigger_1.validateTrigger.blur) {
+                binding.validateBlurHandler = function () {
+                    _this.taskQueue.queueMicroTask(function () { return controller.validateBinding(binding); });
+                };
+                binding.validateTarget = target;
+                target.addEventListener('blur', binding.validateBlurHandler);
+            }
+            if (trigger !== validate_trigger_1.validateTrigger.manual) {
+                binding.standardUpdateTarget = binding.updateTarget;
+                // tslint:disable-next-line:only-arrow-functions
+                binding.updateTarget = function (value) {
+                    this.standardUpdateTarget(value);
+                    this.validationController.resetBinding(this);
+                };
+            }
+        };
+        ValidateBindingBehaviorBase.prototype.unbind = function (binding) {
+            // reset the binding to it's original state.
+            if (binding.standardUpdateSource) {
+                binding.updateSource = binding.standardUpdateSource;
+                binding.standardUpdateSource = null;
+            }
+            if (binding.standardUpdateTarget) {
+                binding.updateTarget = binding.standardUpdateTarget;
+                binding.standardUpdateTarget = null;
+            }
+            if (binding.validateBlurHandler) {
+                binding.validateTarget.removeEventListener('blur', binding.validateBlurHandler);
+                binding.validateBlurHandler = null;
+                binding.validateTarget = null;
+            }
+            binding.validationController.unregisterBinding(binding);
+            binding.validationController = null;
+        };
+        return ValidateBindingBehaviorBase;
+    }());
+    exports.ValidateBindingBehaviorBase = ValidateBindingBehaviorBase;
+});
+
+define('aurelia-validation/validation-controller',["require", "exports", "./validator", "./validate-trigger", "./property-info", "./validate-result"], function (require, exports, validator_1, validate_trigger_1, property_info_1, validate_result_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Orchestrates validation.
+     * Manages a set of bindings, renderers and objects.
+     * Exposes the current list of validation results for binding purposes.
+     */
+    var ValidationController = (function () {
+        function ValidationController(validator) {
+            this.validator = validator;
+            // Registered bindings (via the validate binding behavior)
+            this.bindings = new Map();
+            // Renderers that have been added to the controller instance.
+            this.renderers = [];
+            /**
+             * Validation results that have been rendered by the controller.
+             */
+            this.results = [];
+            /**
+             * Validation errors that have been rendered by the controller.
+             */
+            this.errors = [];
+            /**
+             *  Whether the controller is currently validating.
+             */
+            this.validating = false;
+            // Elements related to validation results that have been rendered.
+            this.elements = new Map();
+            // Objects that have been added to the controller instance (entity-style validation).
+            this.objects = new Map();
+            /**
+             * The trigger that will invoke automatic validation of a property used in a binding.
+             */
+            this.validateTrigger = validate_trigger_1.validateTrigger.blur;
+            // Promise that resolves when validation has completed.
+            this.finishValidating = Promise.resolve();
+        }
+        /**
+         * Adds an object to the set of objects that should be validated when validate is called.
+         * @param object The object.
+         * @param rules Optional. The rules. If rules aren't supplied the Validator implementation will lookup the rules.
+         */
+        ValidationController.prototype.addObject = function (object, rules) {
+            this.objects.set(object, rules);
+        };
+        /**
+         * Removes an object from the set of objects that should be validated when validate is called.
+         * @param object The object.
+         */
+        ValidationController.prototype.removeObject = function (object) {
+            this.objects.delete(object);
+            this.processResultDelta('reset', this.results.filter(function (result) { return result.object === object; }), []);
+        };
+        /**
+         * Adds and renders an error.
+         */
+        ValidationController.prototype.addError = function (message, object, propertyName) {
+            if (propertyName === void 0) { propertyName = null; }
+            var result = new validate_result_1.ValidateResult({}, object, propertyName, false, message);
+            this.processResultDelta('validate', [], [result]);
+            return result;
+        };
+        /**
+         * Removes and unrenders an error.
+         */
+        ValidationController.prototype.removeError = function (result) {
+            if (this.results.indexOf(result) !== -1) {
+                this.processResultDelta('reset', [result], []);
+            }
+        };
+        /**
+         * Adds a renderer.
+         * @param renderer The renderer.
+         */
+        ValidationController.prototype.addRenderer = function (renderer) {
+            var _this = this;
+            this.renderers.push(renderer);
+            renderer.render({
+                kind: 'validate',
+                render: this.results.map(function (result) { return ({ result: result, elements: _this.elements.get(result) }); }),
+                unrender: []
+            });
+        };
+        /**
+         * Removes a renderer.
+         * @param renderer The renderer.
+         */
+        ValidationController.prototype.removeRenderer = function (renderer) {
+            var _this = this;
+            this.renderers.splice(this.renderers.indexOf(renderer), 1);
+            renderer.render({
+                kind: 'reset',
+                render: [],
+                unrender: this.results.map(function (result) { return ({ result: result, elements: _this.elements.get(result) }); })
+            });
+        };
+        /**
+         * Registers a binding with the controller.
+         * @param binding The binding instance.
+         * @param target The DOM element.
+         * @param rules (optional) rules associated with the binding. Validator implementation specific.
+         */
+        ValidationController.prototype.registerBinding = function (binding, target, rules) {
+            this.bindings.set(binding, { target: target, rules: rules, propertyInfo: null });
+        };
+        /**
+         * Unregisters a binding with the controller.
+         * @param binding The binding instance.
+         */
+        ValidationController.prototype.unregisterBinding = function (binding) {
+            this.resetBinding(binding);
+            this.bindings.delete(binding);
+        };
+        /**
+         * Interprets the instruction and returns a predicate that will identify
+         * relevant results in the list of rendered validation results.
+         */
+        ValidationController.prototype.getInstructionPredicate = function (instruction) {
+            var _this = this;
+            if (instruction) {
+                var object_1 = instruction.object, propertyName_1 = instruction.propertyName, rules_1 = instruction.rules;
+                var predicate_1;
+                if (instruction.propertyName) {
+                    predicate_1 = function (x) { return x.object === object_1 && x.propertyName === propertyName_1; };
+                }
+                else {
+                    predicate_1 = function (x) { return x.object === object_1; };
+                }
+                if (rules_1) {
+                    return function (x) { return predicate_1(x) && _this.validator.ruleExists(rules_1, x.rule); };
+                }
+                return predicate_1;
+            }
+            else {
+                return function () { return true; };
+            }
+        };
+        /**
+         * Validates and renders results.
+         * @param instruction Optional. Instructions on what to validate. If undefined, all
+         * objects and bindings will be validated.
+         */
+        ValidationController.prototype.validate = function (instruction) {
+            var _this = this;
+            // Get a function that will process the validation instruction.
+            var execute;
+            if (instruction) {
+                // tslint:disable-next-line:prefer-const
+                var object_2 = instruction.object, propertyName_2 = instruction.propertyName, rules_2 = instruction.rules;
+                // if rules were not specified, check the object map.
+                rules_2 = rules_2 || this.objects.get(object_2);
+                // property specified?
+                if (instruction.propertyName === undefined) {
+                    // validate the specified object.
+                    execute = function () { return _this.validator.validateObject(object_2, rules_2); };
+                }
+                else {
+                    // validate the specified property.
+                    execute = function () { return _this.validator.validateProperty(object_2, propertyName_2, rules_2); };
+                }
+            }
+            else {
+                // validate all objects and bindings.
+                execute = function () {
+                    var promises = [];
+                    for (var _i = 0, _a = Array.from(_this.objects); _i < _a.length; _i++) {
+                        var _b = _a[_i], object = _b[0], rules = _b[1];
+                        promises.push(_this.validator.validateObject(object, rules));
+                    }
+                    for (var _c = 0, _d = Array.from(_this.bindings); _c < _d.length; _c++) {
+                        var _e = _d[_c], binding = _e[0], rules = _e[1].rules;
+                        var propertyInfo = property_info_1.getPropertyInfo(binding.sourceExpression, binding.source);
+                        if (!propertyInfo || _this.objects.has(propertyInfo.object)) {
+                            continue;
+                        }
+                        promises.push(_this.validator.validateProperty(propertyInfo.object, propertyInfo.propertyName, rules));
+                    }
+                    return Promise.all(promises).then(function (resultSets) { return resultSets.reduce(function (a, b) { return a.concat(b); }, []); });
+                };
+            }
+            // Wait for any existing validation to finish, execute the instruction, render the results.
+            this.validating = true;
+            var returnPromise = this.finishValidating
+                .then(execute)
+                .then(function (newResults) {
+                var predicate = _this.getInstructionPredicate(instruction);
+                var oldResults = _this.results.filter(predicate);
+                _this.processResultDelta('validate', oldResults, newResults);
+                if (returnPromise === _this.finishValidating) {
+                    _this.validating = false;
+                }
+                var result = {
+                    instruction: instruction,
+                    valid: newResults.find(function (x) { return !x.valid; }) === undefined,
+                    results: newResults
+                };
+                return result;
+            })
+                .catch(function (exception) {
+                // recover, to enable subsequent calls to validate()
+                _this.validating = false;
+                _this.finishValidating = Promise.resolve();
+                return Promise.reject(exception);
+            });
+            this.finishValidating = returnPromise;
+            return returnPromise;
+        };
+        /**
+         * Resets any rendered validation results (unrenders).
+         * @param instruction Optional. Instructions on what to reset. If unspecified all rendered results
+         * will be unrendered.
+         */
+        ValidationController.prototype.reset = function (instruction) {
+            var predicate = this.getInstructionPredicate(instruction);
+            var oldResults = this.results.filter(predicate);
+            this.processResultDelta('reset', oldResults, []);
+        };
+        /**
+         * Gets the elements associated with an object and propertyName (if any).
+         */
+        ValidationController.prototype.getAssociatedElements = function (_a) {
+            var object = _a.object, propertyName = _a.propertyName;
+            var elements = [];
+            for (var _i = 0, _b = Array.from(this.bindings); _i < _b.length; _i++) {
+                var _c = _b[_i], binding = _c[0], target = _c[1].target;
+                var propertyInfo = property_info_1.getPropertyInfo(binding.sourceExpression, binding.source);
+                if (propertyInfo && propertyInfo.object === object && propertyInfo.propertyName === propertyName) {
+                    elements.push(target);
+                }
+            }
+            return elements;
+        };
+        ValidationController.prototype.processResultDelta = function (kind, oldResults, newResults) {
+            // prepare the instruction.
+            var instruction = {
+                kind: kind,
+                render: [],
+                unrender: []
+            };
+            // create a shallow copy of newResults so we can mutate it without causing side-effects.
+            newResults = newResults.slice(0);
+            var _loop_1 = function (oldResult) {
+                // get the elements associated with the old result.
+                var elements = this_1.elements.get(oldResult);
+                // remove the old result from the element map.
+                this_1.elements.delete(oldResult);
+                // create the unrender instruction.
+                instruction.unrender.push({ result: oldResult, elements: elements });
+                // determine if there's a corresponding new result for the old result we are unrendering.
+                var newResultIndex = newResults.findIndex(function (x) { return x.rule === oldResult.rule && x.object === oldResult.object && x.propertyName === oldResult.propertyName; });
+                if (newResultIndex === -1) {
+                    // no corresponding new result... simple remove.
+                    this_1.results.splice(this_1.results.indexOf(oldResult), 1);
+                    if (!oldResult.valid) {
+                        this_1.errors.splice(this_1.errors.indexOf(oldResult), 1);
+                    }
+                }
+                else {
+                    // there is a corresponding new result...
+                    var newResult = newResults.splice(newResultIndex, 1)[0];
+                    // get the elements that are associated with the new result.
+                    var elements_1 = this_1.getAssociatedElements(newResult);
+                    this_1.elements.set(newResult, elements_1);
+                    // create a render instruction for the new result.
+                    instruction.render.push({ result: newResult, elements: elements_1 });
+                    // do an in-place replacement of the old result with the new result.
+                    // this ensures any repeats bound to this.results will not thrash.
+                    this_1.results.splice(this_1.results.indexOf(oldResult), 1, newResult);
+                    if (!oldResult.valid && newResult.valid) {
+                        this_1.errors.splice(this_1.errors.indexOf(oldResult), 1);
+                    }
+                    else if (!oldResult.valid && !newResult.valid) {
+                        this_1.errors.splice(this_1.errors.indexOf(oldResult), 1, newResult);
+                    }
+                    else if (!newResult.valid) {
+                        this_1.errors.push(newResult);
+                    }
+                }
+            };
+            var this_1 = this;
+            // create unrender instructions from the old results.
+            for (var _i = 0, oldResults_1 = oldResults; _i < oldResults_1.length; _i++) {
+                var oldResult = oldResults_1[_i];
+                _loop_1(oldResult);
+            }
+            // create render instructions from the remaining new results.
+            for (var _a = 0, newResults_1 = newResults; _a < newResults_1.length; _a++) {
+                var result = newResults_1[_a];
+                var elements = this.getAssociatedElements(result);
+                instruction.render.push({ result: result, elements: elements });
+                this.elements.set(result, elements);
+                this.results.push(result);
+                if (!result.valid) {
+                    this.errors.push(result);
+                }
+            }
+            // render.
+            for (var _b = 0, _c = this.renderers; _b < _c.length; _b++) {
+                var renderer = _c[_b];
+                renderer.render(instruction);
+            }
+        };
+        /**
+         * Validates the property associated with a binding.
+         */
+        ValidationController.prototype.validateBinding = function (binding) {
+            if (!binding.isBound) {
+                return;
+            }
+            var propertyInfo = property_info_1.getPropertyInfo(binding.sourceExpression, binding.source);
+            var rules;
+            var registeredBinding = this.bindings.get(binding);
+            if (registeredBinding) {
+                rules = registeredBinding.rules;
+                registeredBinding.propertyInfo = propertyInfo;
+            }
+            if (!propertyInfo) {
+                return;
+            }
+            var object = propertyInfo.object, propertyName = propertyInfo.propertyName;
+            this.validate({ object: object, propertyName: propertyName, rules: rules });
+        };
+        /**
+         * Resets the results for a property associated with a binding.
+         */
+        ValidationController.prototype.resetBinding = function (binding) {
+            var registeredBinding = this.bindings.get(binding);
+            var propertyInfo = property_info_1.getPropertyInfo(binding.sourceExpression, binding.source);
+            if (!propertyInfo && registeredBinding) {
+                propertyInfo = registeredBinding.propertyInfo;
+            }
+            if (registeredBinding) {
+                registeredBinding.propertyInfo = null;
+            }
+            if (!propertyInfo) {
+                return;
+            }
+            var object = propertyInfo.object, propertyName = propertyInfo.propertyName;
+            this.reset({ object: object, propertyName: propertyName });
+        };
+        return ValidationController;
+    }());
+    ValidationController.inject = [validator_1.Validator];
+    exports.ValidationController = ValidationController;
+});
+
+define('aurelia-validation/validator',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Validates objects and properties.
+     */
+    var Validator = (function () {
+        function Validator() {
+        }
+        return Validator;
+    }());
+    exports.Validator = Validator;
+});
+
+define('aurelia-validation/validate-result',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * The result of validating an individual validation rule.
+     */
+    var ValidateResult = (function () {
+        /**
+         * @param rule The rule associated with the result. Validator implementation specific.
+         * @param object The object that was validated.
+         * @param propertyName The name of the property that was validated.
+         * @param error The error, if the result is a validation error.
+         */
+        function ValidateResult(rule, object, propertyName, valid, message) {
+            if (message === void 0) { message = null; }
+            this.rule = rule;
+            this.object = object;
+            this.propertyName = propertyName;
+            this.valid = valid;
+            this.message = message;
+            this.id = ValidateResult.nextId++;
+        }
+        ValidateResult.prototype.toString = function () {
+            return this.valid ? 'Valid.' : this.message;
+        };
+        return ValidateResult;
+    }());
+    ValidateResult.nextId = 0;
+    exports.ValidateResult = ValidateResult;
+});
+
+define('aurelia-validation/validation-controller-factory',["require", "exports", "./validation-controller", "./validator"], function (require, exports, validation_controller_1, validator_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Creates ValidationController instances.
+     */
+    var ValidationControllerFactory = (function () {
+        function ValidationControllerFactory(container) {
+            this.container = container;
+        }
+        ValidationControllerFactory.get = function (container) {
+            return new ValidationControllerFactory(container);
+        };
+        /**
+         * Creates a new controller instance.
+         */
+        ValidationControllerFactory.prototype.create = function (validator) {
+            if (!validator) {
+                validator = this.container.get(validator_1.Validator);
+            }
+            return new validation_controller_1.ValidationController(validator);
+        };
+        /**
+         * Creates a new controller and registers it in the current element's container so that it's
+         * available to the validate binding behavior and renderers.
+         */
+        ValidationControllerFactory.prototype.createForCurrentScope = function (validator) {
+            var controller = this.create(validator);
+            this.container.registerInstance(validation_controller_1.ValidationController, controller);
+            return controller;
+        };
+        return ValidationControllerFactory;
+    }());
+    exports.ValidationControllerFactory = ValidationControllerFactory;
+    ValidationControllerFactory['protocol:aurelia:resolver'] = true;
+});
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+define('aurelia-validation/validation-errors-custom-attribute',["require", "exports", "aurelia-binding", "aurelia-dependency-injection", "aurelia-templating", "./validation-controller", "aurelia-pal"], function (require, exports, aurelia_binding_1, aurelia_dependency_injection_1, aurelia_templating_1, validation_controller_1, aurelia_pal_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var ValidationErrorsCustomAttribute = (function () {
+        function ValidationErrorsCustomAttribute(boundaryElement, controllerAccessor) {
+            this.boundaryElement = boundaryElement;
+            this.controllerAccessor = controllerAccessor;
+            this.controller = null;
+            this.errors = [];
+            this.errorsInternal = [];
+        }
+        ValidationErrorsCustomAttribute.prototype.sort = function () {
+            this.errorsInternal.sort(function (a, b) {
+                if (a.targets[0] === b.targets[0]) {
+                    return 0;
+                }
+                // tslint:disable-next-line:no-bitwise
+                return a.targets[0].compareDocumentPosition(b.targets[0]) & 2 ? 1 : -1;
+            });
+        };
+        ValidationErrorsCustomAttribute.prototype.interestingElements = function (elements) {
+            var _this = this;
+            return elements.filter(function (e) { return _this.boundaryElement.contains(e); });
+        };
+        ValidationErrorsCustomAttribute.prototype.render = function (instruction) {
+            var _loop_1 = function (result) {
+                var index = this_1.errorsInternal.findIndex(function (x) { return x.error === result; });
+                if (index !== -1) {
+                    this_1.errorsInternal.splice(index, 1);
+                }
+            };
+            var this_1 = this;
+            for (var _i = 0, _a = instruction.unrender; _i < _a.length; _i++) {
+                var result = _a[_i].result;
+                _loop_1(result);
+            }
+            for (var _b = 0, _c = instruction.render; _b < _c.length; _b++) {
+                var _d = _c[_b], result = _d.result, elements = _d.elements;
+                if (result.valid) {
+                    continue;
+                }
+                var targets = this.interestingElements(elements);
+                if (targets.length) {
+                    this.errorsInternal.push({ error: result, targets: targets });
+                }
+            }
+            this.sort();
+            this.errors = this.errorsInternal;
+        };
+        ValidationErrorsCustomAttribute.prototype.bind = function () {
+            if (!this.controller) {
+                this.controller = this.controllerAccessor();
+            }
+            // this will call render() with the side-effect of updating this.errors
+            this.controller.addRenderer(this);
+        };
+        ValidationErrorsCustomAttribute.prototype.unbind = function () {
+            if (this.controller) {
+                this.controller.removeRenderer(this);
+            }
+        };
+        return ValidationErrorsCustomAttribute;
+    }());
+    ValidationErrorsCustomAttribute.inject = [aurelia_pal_1.DOM.Element, aurelia_dependency_injection_1.Lazy.of(validation_controller_1.ValidationController)];
+    __decorate([
+        aurelia_templating_1.bindable({ defaultBindingMode: aurelia_binding_1.bindingMode.oneWay })
+    ], ValidationErrorsCustomAttribute.prototype, "controller", void 0);
+    __decorate([
+        aurelia_templating_1.bindable({ primaryProperty: true, defaultBindingMode: aurelia_binding_1.bindingMode.twoWay })
+    ], ValidationErrorsCustomAttribute.prototype, "errors", void 0);
+    ValidationErrorsCustomAttribute = __decorate([
+        aurelia_templating_1.customAttribute('validation-errors')
+    ], ValidationErrorsCustomAttribute);
+    exports.ValidationErrorsCustomAttribute = ValidationErrorsCustomAttribute;
+});
+
+define('aurelia-validation/validation-renderer-custom-attribute',["require", "exports", "./validation-controller"], function (require, exports, validation_controller_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var ValidationRendererCustomAttribute = (function () {
+        function ValidationRendererCustomAttribute() {
+        }
+        ValidationRendererCustomAttribute.prototype.created = function (view) {
+            this.container = view.container;
+        };
+        ValidationRendererCustomAttribute.prototype.bind = function () {
+            this.controller = this.container.get(validation_controller_1.ValidationController);
+            this.renderer = this.container.get(this.value);
+            this.controller.addRenderer(this.renderer);
+        };
+        ValidationRendererCustomAttribute.prototype.unbind = function () {
+            this.controller.removeRenderer(this.renderer);
+            this.controller = null;
+            this.renderer = null;
+        };
+        return ValidationRendererCustomAttribute;
+    }());
+    exports.ValidationRendererCustomAttribute = ValidationRendererCustomAttribute;
+});
+
+define('aurelia-validation/implementation/rules',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Sets, unsets and retrieves rules on an object or constructor function.
+     */
+    var Rules = (function () {
+        function Rules() {
+        }
+        /**
+         * Applies the rules to a target.
+         */
+        Rules.set = function (target, rules) {
+            if (target instanceof Function) {
+                target = target.prototype;
+            }
+            Object.defineProperty(target, Rules.key, { enumerable: false, configurable: false, writable: true, value: rules });
+        };
+        /**
+         * Removes rules from a target.
+         */
+        Rules.unset = function (target) {
+            if (target instanceof Function) {
+                target = target.prototype;
+            }
+            target[Rules.key] = null;
+        };
+        /**
+         * Retrieves the target's rules.
+         */
+        Rules.get = function (target) {
+            return target[Rules.key] || null;
+        };
+        return Rules;
+    }());
+    /**
+     * The name of the property that stores the rules.
+     */
+    Rules.key = '__rules__';
+    exports.Rules = Rules;
+});
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+define('aurelia-validation/implementation/standard-validator',["require", "exports", "aurelia-templating", "../validator", "../validate-result", "./rules", "./validation-messages"], function (require, exports, aurelia_templating_1, validator_1, validate_result_1, rules_1, validation_messages_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Validates.
+     * Responsible for validating objects and properties.
+     */
+    var StandardValidator = (function (_super) {
+        __extends(StandardValidator, _super);
+        function StandardValidator(messageProvider, resources) {
+            var _this = _super.call(this) || this;
+            _this.messageProvider = messageProvider;
+            _this.lookupFunctions = resources.lookupFunctions;
+            _this.getDisplayName = messageProvider.getDisplayName.bind(messageProvider);
+            return _this;
+        }
+        /**
+         * Validates the specified property.
+         * @param object The object to validate.
+         * @param propertyName The name of the property to validate.
+         * @param rules Optional. If unspecified, the rules will be looked up using the metadata
+         * for the object created by ValidationRules....on(class/object)
+         */
+        StandardValidator.prototype.validateProperty = function (object, propertyName, rules) {
+            return this.validate(object, propertyName, rules || null);
+        };
+        /**
+         * Validates all rules for specified object and it's properties.
+         * @param object The object to validate.
+         * @param rules Optional. If unspecified, the rules will be looked up using the metadata
+         * for the object created by ValidationRules....on(class/object)
+         */
+        StandardValidator.prototype.validateObject = function (object, rules) {
+            return this.validate(object, null, rules || null);
+        };
+        /**
+         * Determines whether a rule exists in a set of rules.
+         * @param rules The rules to search.
+         * @parem rule The rule to find.
+         */
+        StandardValidator.prototype.ruleExists = function (rules, rule) {
+            var i = rules.length;
+            while (i--) {
+                if (rules[i].indexOf(rule) !== -1) {
+                    return true;
+                }
+            }
+            return false;
+        };
+        StandardValidator.prototype.getMessage = function (rule, object, value) {
+            var expression = rule.message || this.messageProvider.getMessage(rule.messageKey);
+            // tslint:disable-next-line:prefer-const
+            var _a = rule.property, propertyName = _a.name, displayName = _a.displayName;
+            if (propertyName !== null) {
+                displayName = this.messageProvider.getDisplayName(propertyName, displayName);
+            }
+            var overrideContext = {
+                $displayName: displayName,
+                $propertyName: propertyName,
+                $value: value,
+                $object: object,
+                $config: rule.config,
+                // returns the name of a given property, given just the property name (irrespective of the property's displayName)
+                // split on capital letters, first letter ensured to be capitalized
+                $getDisplayName: this.getDisplayName
+            };
+            return expression.evaluate({ bindingContext: object, overrideContext: overrideContext }, this.lookupFunctions);
+        };
+        StandardValidator.prototype.validateRuleSequence = function (object, propertyName, ruleSequence, sequence, results) {
+            var _this = this;
+            // are we validating all properties or a single property?
+            var validateAllProperties = propertyName === null || propertyName === undefined;
+            var rules = ruleSequence[sequence];
+            var allValid = true;
+            // validate each rule.
+            var promises = [];
+            var _loop_1 = function (i) {
+                var rule = rules[i];
+                // is the rule related to the property we're validating.
+                if (!validateAllProperties && rule.property.name !== propertyName) {
+                    return "continue";
+                }
+                // is this a conditional rule? is the condition met?
+                if (rule.when && !rule.when(object)) {
+                    return "continue";
+                }
+                // validate.
+                var value = rule.property.name === null ? object : object[rule.property.name];
+                var promiseOrBoolean = rule.condition(value, object);
+                if (!(promiseOrBoolean instanceof Promise)) {
+                    promiseOrBoolean = Promise.resolve(promiseOrBoolean);
+                }
+                promises.push(promiseOrBoolean.then(function (valid) {
+                    var message = valid ? null : _this.getMessage(rule, object, value);
+                    results.push(new validate_result_1.ValidateResult(rule, object, rule.property.name, valid, message));
+                    allValid = allValid && valid;
+                    return valid;
+                }));
+            };
+            for (var i = 0; i < rules.length; i++) {
+                _loop_1(i);
+            }
+            return Promise.all(promises)
+                .then(function () {
+                sequence++;
+                if (allValid && sequence < ruleSequence.length) {
+                    return _this.validateRuleSequence(object, propertyName, ruleSequence, sequence, results);
+                }
+                return results;
+            });
+        };
+        StandardValidator.prototype.validate = function (object, propertyName, rules) {
+            // rules specified?
+            if (!rules) {
+                // no. attempt to locate the rules.
+                rules = rules_1.Rules.get(object);
+            }
+            // any rules?
+            if (!rules) {
+                return Promise.resolve([]);
+            }
+            return this.validateRuleSequence(object, propertyName, rules, 0, []);
+        };
+        return StandardValidator;
+    }(validator_1.Validator));
+    StandardValidator.inject = [validation_messages_1.ValidationMessageProvider, aurelia_templating_1.ViewResources];
+    exports.StandardValidator = StandardValidator;
+});
+
+define('aurelia-validation/implementation/validation-messages',["require", "exports", "./validation-parser"], function (require, exports, validation_parser_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Dictionary of validation messages. [messageKey]: messageExpression
+     */
+    exports.validationMessages = {
+        /**
+         * The default validation message. Used with rules that have no standard message.
+         */
+        default: "${$displayName} is invalid.",
+        required: "${$displayName} is required.",
+        matches: "${$displayName} is not correctly formatted.",
+        email: "${$displayName} is not a valid email.",
+        minLength: "${$displayName} must be at least ${$config.length} character${$config.length === 1 ? '' : 's'}.",
+        maxLength: "${$displayName} cannot be longer than ${$config.length} character${$config.length === 1 ? '' : 's'}.",
+        minItems: "${$displayName} must contain at least ${$config.count} item${$config.count === 1 ? '' : 's'}.",
+        maxItems: "${$displayName} cannot contain more than ${$config.count} item${$config.count === 1 ? '' : 's'}.",
+        equals: "${$displayName} must be ${$config.expectedValue}.",
+    };
+    /**
+     * Retrieves validation messages and property display names.
+     */
+    var ValidationMessageProvider = (function () {
+        function ValidationMessageProvider(parser) {
+            this.parser = parser;
+        }
+        /**
+         * Returns a message binding expression that corresponds to the key.
+         * @param key The message key.
+         */
+        ValidationMessageProvider.prototype.getMessage = function (key) {
+            var message;
+            if (key in exports.validationMessages) {
+                message = exports.validationMessages[key];
+            }
+            else {
+                message = exports.validationMessages['default'];
+            }
+            return this.parser.parseMessage(message);
+        };
+        /**
+         * Formulates a property display name using the property name and the configured
+         * displayName (if provided).
+         * Override this with your own custom logic.
+         * @param propertyName The property name.
+         */
+        ValidationMessageProvider.prototype.getDisplayName = function (propertyName, displayName) {
+            if (displayName !== null && displayName !== undefined) {
+                return (displayName instanceof Function) ? displayName() : displayName;
+            }
+            // split on upper-case letters.
+            var words = propertyName.split(/(?=[A-Z])/).join(' ');
+            // capitalize first letter.
+            return words.charAt(0).toUpperCase() + words.slice(1);
+        };
+        return ValidationMessageProvider;
+    }());
+    ValidationMessageProvider.inject = [validation_parser_1.ValidationParser];
+    exports.ValidationMessageProvider = ValidationMessageProvider;
+});
+
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+define('aurelia-validation/implementation/validation-parser',["require", "exports", "aurelia-binding", "aurelia-templating", "./util", "aurelia-logging"], function (require, exports, aurelia_binding_1, aurelia_templating_1, util_1, LogManager) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    var ValidationParser = (function () {
+        function ValidationParser(parser, bindinqLanguage) {
+            this.parser = parser;
+            this.bindinqLanguage = bindinqLanguage;
+            this.emptyStringExpression = new aurelia_binding_1.LiteralString('');
+            this.nullExpression = new aurelia_binding_1.LiteralPrimitive(null);
+            this.undefinedExpression = new aurelia_binding_1.LiteralPrimitive(undefined);
+            this.cache = {};
+        }
+        ValidationParser.prototype.parseMessage = function (message) {
+            if (this.cache[message] !== undefined) {
+                return this.cache[message];
+            }
+            var parts = this.bindinqLanguage.parseInterpolation(null, message);
+            if (parts === null) {
+                return new aurelia_binding_1.LiteralString(message);
+            }
+            var expression = new aurelia_binding_1.LiteralString(parts[0]);
+            for (var i = 1; i < parts.length; i += 2) {
+                expression = new aurelia_binding_1.Binary('+', expression, new aurelia_binding_1.Binary('+', this.coalesce(parts[i]), new aurelia_binding_1.LiteralString(parts[i + 1])));
+            }
+            MessageExpressionValidator.validate(expression, message);
+            this.cache[message] = expression;
+            return expression;
+        };
+        ValidationParser.prototype.parseProperty = function (property) {
+            if (util_1.isString(property)) {
+                return { name: property, displayName: null };
+            }
+            var accessor = this.getAccessorExpression(property.toString());
+            if (accessor instanceof aurelia_binding_1.AccessScope
+                || accessor instanceof aurelia_binding_1.AccessMember && accessor.object instanceof aurelia_binding_1.AccessScope) {
+                return {
+                    name: accessor.name,
+                    displayName: null
+                };
+            }
+            throw new Error("Invalid subject: \"" + accessor + "\"");
+        };
+        ValidationParser.prototype.coalesce = function (part) {
+            // part === null || part === undefined ? '' : part
+            return new aurelia_binding_1.Conditional(new aurelia_binding_1.Binary('||', new aurelia_binding_1.Binary('===', part, this.nullExpression), new aurelia_binding_1.Binary('===', part, this.undefinedExpression)), this.emptyStringExpression, new aurelia_binding_1.CallMember(part, 'toString', []));
+        };
+        ValidationParser.prototype.getAccessorExpression = function (fn) {
+            /* tslint:disable:max-line-length */
+            var classic = /^function\s*\([$_\w\d]+\)\s*\{(?:\s*"use strict";)?\s*(?:[$_\w\d.['"\]+;]+)?\s*return\s+[$_\w\d]+\.([$_\w\d]+)\s*;?\s*\}$/;
+            /* tslint:enable:max-line-length */
+            var arrow = /^\(?[$_\w\d]+\)?\s*=>\s*[$_\w\d]+\.([$_\w\d]+)$/;
+            var match = classic.exec(fn) || arrow.exec(fn);
+            if (match === null) {
+                throw new Error("Unable to parse accessor function:\n" + fn);
+            }
+            return this.parser.parse(match[1]);
+        };
+        return ValidationParser;
+    }());
+    ValidationParser.inject = [aurelia_binding_1.Parser, aurelia_templating_1.BindingLanguage];
+    exports.ValidationParser = ValidationParser;
+    var MessageExpressionValidator = (function (_super) {
+        __extends(MessageExpressionValidator, _super);
+        function MessageExpressionValidator(originalMessage) {
+            var _this = _super.call(this, []) || this;
+            _this.originalMessage = originalMessage;
+            return _this;
+        }
+        MessageExpressionValidator.validate = function (expression, originalMessage) {
+            var visitor = new MessageExpressionValidator(originalMessage);
+            expression.accept(visitor);
+        };
+        MessageExpressionValidator.prototype.visitAccessScope = function (access) {
+            if (access.ancestor !== 0) {
+                throw new Error('$parent is not permitted in validation message expressions.');
+            }
+            if (['displayName', 'propertyName', 'value', 'object', 'config', 'getDisplayName'].indexOf(access.name) !== -1) {
+                LogManager.getLogger('aurelia-validation')
+                    .warn("Did you mean to use \"$" + access.name + "\" instead of \"" + access.name + "\" in this validation message template: \"" + this.originalMessage + "\"?");
+            }
+        };
+        return MessageExpressionValidator;
+    }(aurelia_binding_1.Unparser));
+    exports.MessageExpressionValidator = MessageExpressionValidator;
+});
+
+define('aurelia-validation/implementation/util',["require", "exports"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    function isString(value) {
+        return Object.prototype.toString.call(value) === '[object String]';
+    }
+    exports.isString = isString;
+});
+
+define('aurelia-validation/implementation/validation-rules',["require", "exports", "./util", "./rules", "./validation-messages"], function (require, exports, util_1, rules_1, validation_messages_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    /**
+     * Part of the fluent rule API. Enables customizing property rules.
+     */
+    var FluentRuleCustomizer = (function () {
+        function FluentRuleCustomizer(property, condition, config, fluentEnsure, fluentRules, parser) {
+            if (config === void 0) { config = {}; }
+            this.fluentEnsure = fluentEnsure;
+            this.fluentRules = fluentRules;
+            this.parser = parser;
+            this.rule = {
+                property: property,
+                condition: condition,
+                config: config,
+                when: null,
+                messageKey: 'default',
+                message: null,
+                sequence: fluentRules.sequence
+            };
+            this.fluentEnsure._addRule(this.rule);
+        }
+        /**
+         * Validate subsequent rules after previously declared rules have
+         * been validated successfully. Use to postpone validation of costly
+         * rules until less expensive rules pass validation.
+         */
+        FluentRuleCustomizer.prototype.then = function () {
+            this.fluentRules.sequence++;
+            return this;
+        };
+        /**
+         * Specifies the key to use when looking up the rule's validation message.
+         */
+        FluentRuleCustomizer.prototype.withMessageKey = function (key) {
+            this.rule.messageKey = key;
+            this.rule.message = null;
+            return this;
+        };
+        /**
+         * Specifies rule's validation message.
+         */
+        FluentRuleCustomizer.prototype.withMessage = function (message) {
+            this.rule.messageKey = 'custom';
+            this.rule.message = this.parser.parseMessage(message);
+            return this;
+        };
+        /**
+         * Specifies a condition that must be met before attempting to validate the rule.
+         * @param condition A function that accepts the object as a parameter and returns true
+         * or false whether the rule should be evaluated.
+         */
+        FluentRuleCustomizer.prototype.when = function (condition) {
+            this.rule.when = condition;
+            return this;
+        };
+        /**
+         * Tags the rule instance, enabling the rule to be found easily
+         * using ValidationRules.taggedRules(rules, tag)
+         */
+        FluentRuleCustomizer.prototype.tag = function (tag) {
+            this.rule.tag = tag;
+            return this;
+        };
+        ///// FluentEnsure APIs /////
+        /**
+         * Target a property with validation rules.
+         * @param property The property to target. Can be the property name or a property accessor function.
+         */
+        FluentRuleCustomizer.prototype.ensure = function (subject) {
+            return this.fluentEnsure.ensure(subject);
+        };
+        /**
+         * Targets an object with validation rules.
+         */
+        FluentRuleCustomizer.prototype.ensureObject = function () {
+            return this.fluentEnsure.ensureObject();
+        };
+        Object.defineProperty(FluentRuleCustomizer.prototype, "rules", {
+            /**
+             * Rules that have been defined using the fluent API.
+             */
+            get: function () {
+                return this.fluentEnsure.rules;
+            },
+            enumerable: true,
+            configurable: true
+        });
+        /**
+         * Applies the rules to a class or object, making them discoverable by the StandardValidator.
+         * @param target A class or object.
+         */
+        FluentRuleCustomizer.prototype.on = function (target) {
+            return this.fluentEnsure.on(target);
+        };
+        ///////// FluentRules APIs /////////
+        /**
+         * Applies an ad-hoc rule function to the ensured property or object.
+         * @param condition The function to validate the rule.
+         * Will be called with two arguments, the property value and the object.
+         * Should return a boolean or a Promise that resolves to a boolean.
+         */
+        FluentRuleCustomizer.prototype.satisfies = function (condition, config) {
+            return this.fluentRules.satisfies(condition, config);
+        };
+        /**
+         * Applies a rule by name.
+         * @param name The name of the custom or standard rule.
+         * @param args The rule's arguments.
+         */
+        FluentRuleCustomizer.prototype.satisfiesRule = function (name) {
+            var args = [];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args[_i - 1] = arguments[_i];
+            }
+            return (_a = this.fluentRules).satisfiesRule.apply(_a, [name].concat(args));
+            var _a;
+        };
+        /**
+         * Applies the "required" rule to the property.
+         * The value cannot be null, undefined or whitespace.
+         */
+        FluentRuleCustomizer.prototype.required = function () {
+            return this.fluentRules.required();
+        };
+        /**
+         * Applies the "matches" rule to the property.
+         * Value must match the specified regular expression.
+         * null, undefined and empty-string values are considered valid.
+         */
+        FluentRuleCustomizer.prototype.matches = function (regex) {
+            return this.fluentRules.matches(regex);
+        };
+        /**
+         * Applies the "email" rule to the property.
+         * null, undefined and empty-string values are considered valid.
+         */
+        FluentRuleCustomizer.prototype.email = function () {
+            return this.fluentRules.email();
+        };
+        /**
+         * Applies the "minLength" STRING validation rule to the property.
+         * null, undefined and empty-string values are considered valid.
+         */
+        FluentRuleCustomizer.prototype.minLength = function (length) {
+            return this.fluentRules.minLength(length);
+        };
+        /**
+         * Applies the "maxLength" STRING validation rule to the property.
+         * null, undefined and empty-string values are considered valid.
+         */
+        FluentRuleCustomizer.prototype.maxLength = function (length) {
+            return this.fluentRules.maxLength(length);
+        };
+        /**
+         * Applies the "minItems" ARRAY validation rule to the property.
+         * null and undefined values are considered valid.
+         */
+        FluentRuleCustomizer.prototype.minItems = function (count) {
+            return this.fluentRules.minItems(count);
+        };
+        /**
+         * Applies the "maxItems" ARRAY validation rule to the property.
+         * null and undefined values are considered valid.
+         */
+        FluentRuleCustomizer.prototype.maxItems = function (count) {
+            return this.fluentRules.maxItems(count);
+        };
+        /**
+         * Applies the "equals" validation rule to the property.
+         * null, undefined and empty-string values are considered valid.
+         */
+        FluentRuleCustomizer.prototype.equals = function (expectedValue) {
+            return this.fluentRules.equals(expectedValue);
+        };
+        return FluentRuleCustomizer;
+    }());
+    exports.FluentRuleCustomizer = FluentRuleCustomizer;
+    /**
+     * Part of the fluent rule API. Enables applying rules to properties and objects.
+     */
+    var FluentRules = (function () {
+        function FluentRules(fluentEnsure, parser, property) {
+            this.fluentEnsure = fluentEnsure;
+            this.parser = parser;
+            this.property = property;
+            /**
+             * Current rule sequence number. Used to postpone evaluation of rules until rules
+             * with lower sequence number have successfully validated. The "then" fluent API method
+             * manages this property, there's usually no need to set it directly.
+             */
+            this.sequence = 0;
+        }
+        /**
+         * Sets the display name of the ensured property.
+         */
+        FluentRules.prototype.displayName = function (name) {
+            this.property.displayName = name;
+            return this;
+        };
+        /**
+         * Applies an ad-hoc rule function to the ensured property or object.
+         * @param condition The function to validate the rule.
+         * Will be called with two arguments, the property value and the object.
+         * Should return a boolean or a Promise that resolves to a boolean.
+         */
+        FluentRules.prototype.satisfies = function (condition, config) {
+            return new FluentRuleCustomizer(this.property, condition, config, this.fluentEnsure, this, this.parser);
+        };
+        /**
+         * Applies a rule by name.
+         * @param name The name of the custom or standard rule.
+         * @param args The rule's arguments.
+         */
+        FluentRules.prototype.satisfiesRule = function (name) {
+            var _this = this;
+            var args = [];
+            for (var _i = 1; _i < arguments.length; _i++) {
+                args[_i - 1] = arguments[_i];
+            }
+            var rule = FluentRules.customRules[name];
+            if (!rule) {
+                // standard rule?
+                rule = this[name];
+                if (rule instanceof Function) {
+                    return rule.call.apply(rule, [this].concat(args));
+                }
+                throw new Error("Rule with name \"" + name + "\" does not exist.");
+            }
+            var config = rule.argsToConfig ? rule.argsToConfig.apply(rule, args) : undefined;
+            return this.satisfies(function (value, obj) {
+                return (_a = rule.condition).call.apply(_a, [_this, value, obj].concat(args));
+                var _a;
+            }, config)
+                .withMessageKey(name);
+        };
+        /**
+         * Applies the "required" rule to the property.
+         * The value cannot be null, undefined or whitespace.
+         */
+        FluentRules.prototype.required = function () {
+            return this.satisfies(function (value) {
+                return value !== null
+                    && value !== undefined
+                    && !(util_1.isString(value) && !/\S/.test(value));
+            }).withMessageKey('required');
+        };
+        /**
+         * Applies the "matches" rule to the property.
+         * Value must match the specified regular expression.
+         * null, undefined and empty-string values are considered valid.
+         */
+        FluentRules.prototype.matches = function (regex) {
+            return this.satisfies(function (value) { return value === null || value === undefined || value.length === 0 || regex.test(value); })
+                .withMessageKey('matches');
+        };
+        /**
+         * Applies the "email" rule to the property.
+         * null, undefined and empty-string values are considered valid.
+         */
+        FluentRules.prototype.email = function () {
+            // regex from https://html.spec.whatwg.org/multipage/forms.html#valid-e-mail-address
+            /* tslint:disable:max-line-length */
+            return this.matches(/^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)
+                .withMessageKey('email');
+        };
+        /**
+         * Applies the "minLength" STRING validation rule to the property.
+         * null, undefined and empty-string values are considered valid.
+         */
+        FluentRules.prototype.minLength = function (length) {
+            return this.satisfies(function (value) { return value === null || value === undefined || value.length === 0 || value.length >= length; }, { length: length })
+                .withMessageKey('minLength');
+        };
+        /**
+         * Applies the "maxLength" STRING validation rule to the property.
+         * null, undefined and empty-string values are considered valid.
+         */
+        FluentRules.prototype.maxLength = function (length) {
+            return this.satisfies(function (value) { return value === null || value === undefined || value.length === 0 || value.length <= length; }, { length: length })
+                .withMessageKey('maxLength');
+        };
+        /**
+         * Applies the "minItems" ARRAY validation rule to the property.
+         * null and undefined values are considered valid.
+         */
+        FluentRules.prototype.minItems = function (count) {
+            return this.satisfies(function (value) { return value === null || value === undefined || value.length >= count; }, { count: count })
+                .withMessageKey('minItems');
+        };
+        /**
+         * Applies the "maxItems" ARRAY validation rule to the property.
+         * null and undefined values are considered valid.
+         */
+        FluentRules.prototype.maxItems = function (count) {
+            return this.satisfies(function (value) { return value === null || value === undefined || value.length <= count; }, { count: count })
+                .withMessageKey('maxItems');
+        };
+        /**
+         * Applies the "equals" validation rule to the property.
+         * null and undefined values are considered valid.
+         */
+        FluentRules.prototype.equals = function (expectedValue) {
+            return this.satisfies(function (value) { return value === null || value === undefined || value === '' || value === expectedValue; }, { expectedValue: expectedValue })
+                .withMessageKey('equals');
+        };
+        return FluentRules;
+    }());
+    FluentRules.customRules = {};
+    exports.FluentRules = FluentRules;
+    /**
+     * Part of the fluent rule API. Enables targeting properties and objects with rules.
+     */
+    var FluentEnsure = (function () {
+        function FluentEnsure(parser) {
+            this.parser = parser;
+            /**
+             * Rules that have been defined using the fluent API.
+             */
+            this.rules = [];
+        }
+        /**
+         * Target a property with validation rules.
+         * @param property The property to target. Can be the property name or a property accessor
+         * function.
+         */
+        FluentEnsure.prototype.ensure = function (property) {
+            this.assertInitialized();
+            return new FluentRules(this, this.parser, this.parser.parseProperty(property));
+        };
+        /**
+         * Targets an object with validation rules.
+         */
+        FluentEnsure.prototype.ensureObject = function () {
+            this.assertInitialized();
+            return new FluentRules(this, this.parser, { name: null, displayName: null });
+        };
+        /**
+         * Applies the rules to a class or object, making them discoverable by the StandardValidator.
+         * @param target A class or object.
+         */
+        FluentEnsure.prototype.on = function (target) {
+            rules_1.Rules.set(target, this.rules);
+            return this;
+        };
+        /**
+         * Adds a rule definition to the sequenced ruleset.
+         * @internal
+         */
+        FluentEnsure.prototype._addRule = function (rule) {
+            while (this.rules.length < rule.sequence + 1) {
+                this.rules.push([]);
+            }
+            this.rules[rule.sequence].push(rule);
+        };
+        FluentEnsure.prototype.assertInitialized = function () {
+            if (this.parser) {
+                return;
+            }
+            throw new Error("Did you forget to add \".plugin('aurelia-validation')\" to your main.js?");
+        };
+        return FluentEnsure;
+    }());
+    exports.FluentEnsure = FluentEnsure;
+    /**
+     * Fluent rule definition API.
+     */
+    var ValidationRules = (function () {
+        function ValidationRules() {
+        }
+        ValidationRules.initialize = function (parser) {
+            ValidationRules.parser = parser;
+        };
+        /**
+         * Target a property with validation rules.
+         * @param property The property to target. Can be the property name or a property accessor function.
+         */
+        ValidationRules.ensure = function (property) {
+            return new FluentEnsure(ValidationRules.parser).ensure(property);
+        };
+        /**
+         * Targets an object with validation rules.
+         */
+        ValidationRules.ensureObject = function () {
+            return new FluentEnsure(ValidationRules.parser).ensureObject();
+        };
+        /**
+         * Defines a custom rule.
+         * @param name The name of the custom rule. Also serves as the message key.
+         * @param condition The rule function.
+         * @param message The message expression
+         * @param argsToConfig A function that maps the rule's arguments to a "config"
+         * object that can be used when evaluating the message expression.
+         */
+        ValidationRules.customRule = function (name, condition, message, argsToConfig) {
+            validation_messages_1.validationMessages[name] = message;
+            FluentRules.customRules[name] = { condition: condition, argsToConfig: argsToConfig };
+        };
+        /**
+         * Returns rules with the matching tag.
+         * @param rules The rules to search.
+         * @param tag The tag to search for.
+         */
+        ValidationRules.taggedRules = function (rules, tag) {
+            return rules.map(function (x) { return x.filter(function (r) { return r.tag === tag; }); });
+        };
+        /**
+         * Removes the rules from a class or object.
+         * @param target A class or object.
+         */
+        ValidationRules.off = function (target) {
+            rules_1.Rules.unset(target);
+        };
+        return ValidationRules;
+    }());
+    exports.ValidationRules = ValidationRules;
+});
+
+function _aureliaConfigureModuleLoader(){requirejs.config({"baseUrl":"src/","paths":{"chartjs":"../node_modules/chart.js/Chart.min","aurelia-binding":"../node_modules/aurelia-binding/dist/amd/aurelia-binding","aurelia-dependency-injection":"../node_modules/aurelia-dependency-injection/dist/amd/aurelia-dependency-injection","aurelia-event-aggregator":"../node_modules/aurelia-event-aggregator/dist/amd/aurelia-event-aggregator","aurelia-bootstrapper":"../node_modules/aurelia-bootstrapper/dist/amd/aurelia-bootstrapper","aurelia-framework":"../node_modules/aurelia-framework/dist/amd/aurelia-framework","aurelia-history":"../node_modules/aurelia-history/dist/amd/aurelia-history","aurelia-history-browser":"../node_modules/aurelia-history-browser/dist/amd/aurelia-history-browser","aurelia-loader":"../node_modules/aurelia-loader/dist/amd/aurelia-loader","aurelia-logging":"../node_modules/aurelia-logging/dist/amd/aurelia-logging","aurelia-loader-default":"../node_modules/aurelia-loader-default/dist/amd/aurelia-loader-default","aurelia-logging-console":"../node_modules/aurelia-logging-console/dist/amd/aurelia-logging-console","aurelia-metadata":"../node_modules/aurelia-metadata/dist/amd/aurelia-metadata","aurelia-pal":"../node_modules/aurelia-pal/dist/amd/aurelia-pal","aurelia-pal-browser":"../node_modules/aurelia-pal-browser/dist/amd/aurelia-pal-browser","aurelia-path":"../node_modules/aurelia-path/dist/amd/aurelia-path","aurelia-polyfills":"../node_modules/aurelia-polyfills/dist/amd/aurelia-polyfills","aurelia-router":"../node_modules/aurelia-router/dist/amd/aurelia-router","aurelia-route-recognizer":"../node_modules/aurelia-route-recognizer/dist/amd/aurelia-route-recognizer","aurelia-task-queue":"../node_modules/aurelia-task-queue/dist/amd/aurelia-task-queue","aurelia-templating":"../node_modules/aurelia-templating/dist/amd/aurelia-templating","aurelia-templating-binding":"../node_modules/aurelia-templating-binding/dist/amd/aurelia-templating-binding","text":"../node_modules/text/text","moment":"../node_modules/moment/moment","app-bundle":"../scripts/app-bundle"},"packages":[{"name":"aurelia-templating-resources","location":"../node_modules/aurelia-templating-resources/dist/amd","main":"aurelia-templating-resources"},{"name":"aurelia-testing","location":"../node_modules/aurelia-testing/dist/amd","main":"aurelia-testing"},{"name":"aurelia-templating-router","location":"../node_modules/aurelia-templating-router/dist/amd","main":"aurelia-templating-router"},{"name":"aurelia-dialog","location":"../node_modules/aurelia-dialog/dist/amd","main":"aurelia-dialog"},{"name":"aurelia-validation","location":"../node_modules/aurelia-validation/dist/amd","main":"aurelia-validation"}],"stubModules":["text"],"shim":{"chartjs":{"exports":"Chart"}},"bundles":{"app-bundle":["environment","main","backend/lorem","backend/server","login/login","home/home","resources/bootstrap-form-renderer","resources/index","settings/index","settings/routes","shell/routes","shell/shell","tickets/thread","tickets/tickets","users/edit-user-controller","users/users","resources/dialogs/common-dialogs","resources/dialogs/message-box","resources/dialogs/prompt","resources/messages/tab-opened","resources/elements/bar-chart","resources/elements/chart-data","resources/elements/chart-element","resources/elements/data-grid","resources/elements/line-chart","resources/elements/rich-text-editor","resources/value-converters/activity-type-to-route","resources/value-converters/date","settings/account/index","settings/api/index","settings/email/index","settings/facebook/index","settings/feedbacktab/index","settings/overview/index","settings/security/index","settings/subscription/index","settings/twitter/index","settings/webportal/index","home/activity-list","home/news-list","shell/activity-list","shell/header","shell/sidebar"]}})}

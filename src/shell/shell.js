@@ -2,13 +2,15 @@ import {inject, Aurelia} from 'aurelia-framework';
 import {User} from 'backend/server';
 import {TabOpened} from 'resources/messages/tab-opened';
 import routes from './routes';
+import {CommonDialogs} from 'resources/dialogs/common-dialogs'
 
-@inject(Aurelia, User)
+@inject(Aurelia, User, CommonDialogs)
 export class Shell {
-  constructor(aurelia, user) {
+  constructor(aurelia, user, commonDialogs) {
     this.aurelia = aurelia;
     this.user = user;
     this.tabs = [];
+    this.commonDialogs = commonDialogs;
   }
 
   configureRouter(config, router) {
@@ -38,7 +40,7 @@ export class Shell {
     if (!tab.isActive) {
       return;
     }
-    
+
     let next = this.tabs[0];
 
     if (next) {
@@ -50,8 +52,18 @@ export class Shell {
 
   logout() {
     //TODO: Implement open tab guard logic.
+    if (this.tabs.length > 0) {
+      const message = "You have tabs open. Are you sure you want to log out?"
+      this.commonDialogs.showMessage(message, 'Logout', ['Yes', 'No']).then(response => {
+        if (!response.wasCancelled) {
+          this._doLogout();
+        }
+      });
+    } else {
+      this._doLogout();
+    }
   }
-  
+
   _doLogout() {
     this.aurelia.setRoot('login/login');
     this.aurelia.container.unregister(User);
@@ -62,17 +74,17 @@ export class Shell {
 
   onTabOpened(tab) {
     let existing = this.tabs.find(x => x.matches(tab));
-    
+
     if (!existing) {
       this.tabs.push(tab);
     }
   }
-  
+
   onNavigationComplete(msg) {
     if (!msg.result.completed) {
       return;
     }
-    
+
     this.tabs.forEach(x => x.updateActivation(msg.instruction));
   }
 }
